@@ -11,3 +11,4 @@ flowchart TD
     owner[Inbox: scutua@gmail.com] -->|receives forwarded mail| hello[Alias: hello@whaletrucker.com]
     hello --> ImprovMX[ImprovMX Forwarding]
     ImprovMX --> owner
+
