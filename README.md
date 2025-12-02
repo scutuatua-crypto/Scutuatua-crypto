@@ -1,15 +1,13 @@
-# WhaleTrucker Platform 🐋
+# WhaleTrucker Reef Platform 🐋🌊
 
-## Overview
-This is the living reef archive for **whaletrucker.com** — badges, aliases, and rituals unified.
+## 📖 Overview
+This is the living reef archive for **whaletrucker.com**.  
+It celebrates every badge, alias, and ritual in one place — powered by GitHub Pages and Cloudflare.
 
 ---
 
-## 📬 Mail flow
+## 📬 Mail Flow
 ```mermaid
 flowchart TD
-    owner[Inbox: scutua@gmail.com] -->|receives forwarded mail| hello[Alias: hello@whaletrucker.com]
-    hello --> ImprovMX[ImprovMX Forwarding]
-    ImprovMX --> owner
-
----
+    hello[Alias: hello@whaletrucker.com] --> ImprovMX[ImprovMX Forwarding]
+    ImprovMX --> scutua[Inbox: scutua@gmail.com]
