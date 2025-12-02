@@ -1,0 +1,13 @@
+# WhaleTrucker Platform 🐋
+
+## Overview
+This is the living reef archive for **whaletrucker.com** — badges, aliases, and rituals unified.
+
+---
+
+## 📬 Mail flow
+```mermaid
+flowchart TD
+    owner[Inbox: scutua@gmail.com] -->|receives forwarded mail| hello[Alias: hello@whaletrucker.com]
+    hello --> ImprovMX[ImprovMX Forwarding]
+    ImprovMX --> owner
