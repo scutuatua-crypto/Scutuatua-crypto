@@ -1,13 +1,15 @@
-# WhaleTrucker Reef Platform 🐋🌊
+# 🐋 WhaleTrucker Reef Platform 🌊
 
-## 📖 Overview
-This is the living reef archive for **whaletrucker.com**.  
-It celebrates every badge, alias, and ritual in one place — powered by GitHub Pages and Cloudflare.
+This is the living reef archive for whaletrucker.com.  
+It celebrates every badge, alias, and ritual in one place — hosted by GitHub Pages.
 
----
-
-## 📬 Mail Flow
-```mermaid
-flowchart TD
-    hello[Alias: hello@whaletrucker.com] --> ImprovMX[ImprovMX Forwarding]
-    ImprovMX --> scutua[Inbox: scutua@gmail.com]
+## 🌐 Reef Links
+👉 [reef-flow.md](reef-flow.md)  
+👉 [recover-flow.md](recover-flow.md)  
+👉 [badge-history.md](badge-history.md)  
+👉 [reef-compass.md](reef-compass.md)  
+👉 [proxy-migration.md](proxy-migration.md)  
+👉 [staking-flow.md](staking-flow.md)  
+👉 [governance-flow.md](governance-flow.md)  
+👉 [notification-flow.md](notification-flow.md)  
+👉 [splash.log](splash.log)
