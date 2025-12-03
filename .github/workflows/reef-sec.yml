@@ -1,0 +1,21 @@
+name: Reef Security Scan
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  secret-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout reef
+        uses: actions/checkout@v3
+
+      - name: Run GitHub Secret Scan
+        uses: trufflesecurity/trufflehog@v3
+        with:
+          path: .
+          json: true
+          fail: true
