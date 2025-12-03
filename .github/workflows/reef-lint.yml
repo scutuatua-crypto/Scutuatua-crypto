@@ -1,0 +1,37 @@
+name: Reef Lint
+
+on:
+  push:
+    paths:
+      - '**/*.md'
+  pull_request:
+    paths:
+      - '**/*.md'
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout reef
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install Mermaid CLI
+        run: npm install -g @mermaid-js/mermaid-cli
+
+      - name: Install Markdown Lint
+        run: npm install -g markdownlint-cli
+
+      - name: Lint Mermaid diagrams
+        run: |
+          for file in $(find . -name "*.md"); do
+            echo "Checking Mermaid in $file"
+            mmdc -i "$file" -o /dev/null || echo "⚠️ Mermaid error in $file"
+          done
+
+      - name: Lint Markdown files
+        run: markdownlint '**/*.md'
