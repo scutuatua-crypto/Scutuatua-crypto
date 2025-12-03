@@ -1,0 +1,29 @@
+name: Reef Mint
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "vault.json"
+
+jobs:
+  mint-badge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Git
+        run: |
+          git config user.name "ReefBot"
+          git config user.email "reefbot@reef.local"
+
+      - name: Mint badge to splash.log.md
+        run: |
+          echo -e "\n## Badge: Vault Updated\nvault.json changed at $(date)\nMinted by ReefBot 🐋" >> splash.log.md
+
+      - name: Commit and push
+        run: |
+          git add splash.log.md
+          git commit -m "mint: auto badge update"
+          git push
