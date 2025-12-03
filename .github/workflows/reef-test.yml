@@ -39,7 +39,7 @@ jobs:
 
       - name: Validate JSON files
         run: |
-          for file in $(find . -name "*.json"); do
+          for file yin $(find . -name "*.json"); do
             echo "Checking $file"
             jsonlint -q "$file"
           done
