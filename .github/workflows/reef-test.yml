@@ -6,11 +6,13 @@ on:
       - '**/*.yml'
       - '**/*.yaml'
       - '**/*.json'
+      - '**/*.md'
   pull_request:
     paths:
       - '**/*.yml'
       - '**/*.yaml'
       - '**/*.json'
+      - '**/*.md'
 
 jobs:
   validate:
@@ -26,7 +28,7 @@ jobs:
 
       - name: Install linters
         run: |
-          npm install -g yaml-lint jsonlint
+          npm install -g yaml-lint jsonlint markdown-link-check
 
       - name: Validate YAML files
         run: |
@@ -42,3 +44,9 @@ jobs:
             jsonlint -q "$file"
           done
 
+      - name: Validate Markdown links
+        run: |
+          for file in $(find . -name "*.md"); do
+            echo "Checking links in $file"
+            markdown-link-check "$file" --quiet
+          done
