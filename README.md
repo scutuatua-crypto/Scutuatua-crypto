@@ -19,4 +19,3 @@ graph TD
   Outlook --> Gmail
   Outlook --> Yedfree
   Outlook --> ScutuaBan
-
