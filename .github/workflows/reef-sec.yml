@@ -19,3 +19,20 @@ jobs:
           path: .
           json: true
           fail: true
+
+  dependency-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout reef
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run npm audit
+        run: npm audit --audit-level=high
