@@ -1,0 +1,44 @@
+name: Reef Test Governance
+
+on:
+  push:
+    paths:
+      - '**/*.yml'
+      - '**/*.yaml'
+      - '**/*.json'
+  pull_request:
+    paths:
+      - '**/*.yml'
+      - '**/*.yaml'
+      - '**/*.json'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout reef
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install linters
+        run: |
+          npm install -g yaml-lint jsonlint
+
+      - name: Validate YAML files
+        run: |
+          for file in $(find . -name "*.yml" -o -name "*.yaml"); do
+            echo "Checking $file"
+            yamllint "$file"
+          done
+
+      - name: Validate JSON files
+        run: |
+          for file in $(find . -name "*.json"); do
+            echo "Checking $file"
+            jsonlint -q "$file"
+          done
+
