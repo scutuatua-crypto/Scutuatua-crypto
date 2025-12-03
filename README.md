@@ -1,3 +1,11 @@
+# 🐋 Badge: Identity Migration Recorded
+
+From: Scutua (banned)  
+To: scututaua-crypto via czonedive-core  
+Effect: Legacy preserved, WhaleTrucker remixed  
+Status: Memory locked
+
+
 # Reef Map
 
 ```mermaid
