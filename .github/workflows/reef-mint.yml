@@ -1,0 +1,30 @@
+name: Reef Mint
+
+on:
+  push:
+    paths:
+      - '**/*.md'
+      - 'splash.log'
+
+jobs:
+  mint-badge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout reef
+        uses: actions/checkout@v3
+
+      - name: Mint badge entry
+        run: |
+          echo "## Badge Minted" >> splash.log
+          echo "- Commit: $GITHUB_SHA" >> splash.log
+          echo "- Repo: $GITHUB_REPOSITORY" >> splash.log
+          echo "- Date: $(date -u)" >> splash.log
+          echo "" >> splash.log
+
+      - name: Commit splash.log update
+        run: |
+          git config --global user.name "Reef Bot"
+          git config --global user.email "reef-bot@example.com"
+          git add splash.log
+          git commit -m "Mint badge entry for $GITHUB_SHA"
+          git push
