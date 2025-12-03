@@ -1,0 +1,1103 @@
+<?xml version='1.0' encoding='utf-8'?>
+<rfc xmlns:xi="http://www.w3.org/2001/XInclude" version="3" ipr="trust200902" docName="draft-ietf-dnsop-rfc8624-bis-13" number="9904" category="std" consensus="true" submissionType="IETF" obsoletes="8624" updates="9157" tocInclude="true" sortRefs="true" symRefs="true" xml:lang="en" prepTime="2025-11-30T15:58:15" indexInclude="true" scripts="Common,Latin" tocDepth="3">
+  <link href="https://datatracker.ietf.org/doc/draft-ietf-dnsop-rfc8624-bis-13" rel="prev"/>
+  <link href="https://dx.doi.org/10.17487/rfc9904" rel="alternate"/>
+  <link href="urn:issn:2070-1721" rel="alternate"/>
+  <front>
+    <title abbrev="DNSSEC Algorithms Update Process">DNSSEC Cryptographic Algorithm Recommendation Update Process</title>
+    <seriesInfo name="RFC" value="9904" stream="IETF"/>
+    <author initials="W." surname="Hardaker" fullname="Wes Hardaker">
+      <organization showOnFrontPage="true">USC/ISI</organization>
+      <address>
+        <email>ietf@hardakers.net</email>
+      </address>
+    </author>
+    <author initials="W." surname="Kumari" fullname="Warren Kumari">
+      <organization showOnFrontPage="true">Google</organization>
+      <address>
+        <email>warren@kumari.net</email>
+      </address>
+    </author>
+    <date month="11" year="2025"/>
+    <area>OPS</area>
+    <workgroup>dnsop</workgroup>
+    <abstract pn="section-abstract">
+      <t indent="0" pn="section-abstract-1">The DNSSEC protocol makes use of various cryptographic algorithms to provide
+   authentication of DNS data and proof of nonexistence.  To ensure
+   interoperability between DNS resolvers and DNS authoritative servers, it is
+   necessary to specify both a set of algorithm implementation requirements and
+   usage guidelines to ensure that there is at least one algorithm that all
+   implementations support. This document replaces and obsoletes RFC 8624 and moves the
+   canonical source of algorithm implementation requirements and usage guidance
+   for DNSSEC from RFC 8624 to the IANA DNSSEC algorithm registries. This is done to allow
+   the list of requirements to be more easily updated and referenced.
+   Extensions to these registries can be made in future RFCs.
+   This document also updates RFC 9157 and incorporates the revised 
+      IANA DNSSEC considerations from that RFC.</t>
+      <t indent="0" pn="section-abstract-2">This document does not change the recommendation status (<bcp14>MUST</bcp14>, <bcp14>MAY</bcp14>, <bcp14>RECOMMENDED</bcp14>, etc.) 
+   of the algorithms listed in RFC 8624; that is the work of future documents.</t>
+    </abstract>
+    <boilerplate>
+      <section anchor="status-of-memo" numbered="false" removeInRFC="false" toc="exclude" pn="section-boilerplate.1">
+        <name slugifiedName="name-status-of-this-memo">Status of This Memo</name>
+        <t indent="0" pn="section-boilerplate.1-1">
+            This is an Internet Standards Track document.
+        </t>
+        <t indent="0" pn="section-boilerplate.1-2">
+            This document is a product of the Internet Engineering Task Force
+            (IETF).  It represents the consensus of the IETF community.  It has
+            received public review and has been approved for publication by
+            the Internet Engineering Steering Group (IESG).  Further
+            information on Internet Standards is available in Section 2 of 
+            RFC 7841.
+        </t>
+        <t indent="0" pn="section-boilerplate.1-3">
+            Information about the current status of this document, any
+            errata, and how to provide feedback on it may be obtained at
+            <eref target="https://www.rfc-editor.org/info/rfc9904" brackets="none"/>.
+        </t>
+      </section>
+      <section anchor="copyright" numbered="false" removeInRFC="false" toc="exclude" pn="section-boilerplate.2">
+        <name slugifiedName="name-copyright-notice">Copyright Notice</name>
+        <t indent="0" pn="section-boilerplate.2-1">
+            Copyright (c) 2025 IETF Trust and the persons identified as the
+            document authors. All rights reserved.
+        </t>
+        <t indent="0" pn="section-boilerplate.2-2">
+            This document is subject to BCP 78 and the IETF Trust's Legal
+            Provisions Relating to IETF Documents
+            (<eref target="https://trustee.ietf.org/license-info" brackets="none"/>) in effect on the date of
+            publication of this document. Please review these documents
+            carefully, as they describe your rights and restrictions with
+            respect to this document. Code Components extracted from this
+            document must include Revised BSD License text as described in
+            Section 4.e of the Trust Legal Provisions and are provided without
+            warranty as described in the Revised BSD License.
+        </t>
+      </section>
+    </boilerplate>
+    <toc>
+      <section anchor="toc" numbered="false" removeInRFC="false" toc="exclude" pn="section-toc.1">
+        <name slugifiedName="name-table-of-contents">Table of Contents</name>
+        <ul bare="true" empty="true" indent="2" spacing="compact" pn="section-toc.1-1">
+          <li pn="section-toc.1-1.1">
+            <t indent="0" pn="section-toc.1-1.1.1"><xref derivedContent="1" format="counter" sectionFormat="of" target="section-1"/>.  <xref derivedContent="" format="title" sectionFormat="of" target="name-introduction">Introduction</xref></t>
+            <ul bare="true" empty="true" indent="2" spacing="compact" pn="section-toc.1-1.1.2">
+              <li pn="section-toc.1-1.1.2.1">
+                <t indent="0" keepWithNext="true" pn="section-toc.1-1.1.2.1.1"><xref derivedContent="1.1" format="counter" sectionFormat="of" target="section-1.1"/>.  <xref derivedContent="" format="title" sectionFormat="of" target="name-document-audience">Document Audience</xref></t>
+              </li>
+              <li pn="section-toc.1-1.1.2.2">
+                <t indent="0" keepWithNext="true" pn="section-toc.1-1.1.2.2.1"><xref derivedContent="1.2" format="counter" sectionFormat="of" target="section-1.2"/>.  <xref derivedContent="" format="title" sectionFormat="of" target="name-updating-algorithm-requirem">Updating Algorithm Requirement Levels</xref></t>
+              </li>
+              <li pn="section-toc.1-1.1.2.3">
+                <t indent="0" keepWithNext="true" pn="section-toc.1-1.1.2.3.1"><xref derivedContent="1.3" format="counter" sectionFormat="of" target="section-1.3"/>.  <xref derivedContent="" format="title" sectionFormat="of" target="name-requirements-notation">Requirements Notation</xref></t>
+              </li>
+            </ul>
+          </li>
+          <li pn="section-toc.1-1.2">
+            <t indent="0" pn="section-toc.1-1.2.1"><xref derivedContent="2" format="counter" sectionFormat="of" target="section-2"/>.  <xref derivedContent="" format="title" sectionFormat="of" target="name-adding-usage-and-implementa">Adding Usage and Implementation Recommendations to the IANA DNSSEC Algorithm Registries</xref></t>
+            <ul bare="true" empty="true" indent="2" spacing="compact" pn="section-toc.1-1.2.2">
+              <li pn="section-toc.1-1.2.2.1">
+                <t indent="0" pn="section-toc.1-1.2.2.1.1"><xref derivedContent="2.1" format="counter" sectionFormat="of" target="section-2.1"/>.  <xref derivedContent="" format="title" sectionFormat="of" target="name-column-descriptions">Column Descriptions</xref></t>
+              </li>
+              <li pn="section-toc.1-1.2.2.2">
+                <t indent="0" pn="section-toc.1-1.2.2.2.1"><xref derivedContent="2.2" format="counter" sectionFormat="of" target="section-2.2"/>.  <xref derivedContent="" format="title" sectionFormat="of" target="name-adding-and-changing-values">Adding and Changing Values</xref></t>
+              </li>
+            </ul>
+          </li>
+          <li pn="section-toc.1-1.3">
+            <t indent="0" pn="section-toc.1-1.3.1"><xref derivedContent="3" format="counter" sectionFormat="of" target="section-3"/>.  <xref derivedContent="" format="title" sectionFormat="of" target="name-dns-security-algorithm-numb">DNS Security Algorithm Numbers Registry Column Values</xref></t>
+          </li>
+          <li pn="section-toc.1-1.4">
+            <t indent="0" pn="section-toc.1-1.4.1"><xref derivedContent="4" format="counter" sectionFormat="of" target="section-4"/>.  <xref derivedContent="" format="title" sectionFormat="of" target="name-digest-algorithms-registry-">Digest Algorithms Registry Column Values</xref></t>
+          </li>
+          <li pn="section-toc.1-1.5">
+            <t indent="0" pn="section-toc.1-1.5.1"><xref derivedContent="5" format="counter" sectionFormat="of" target="section-5"/>.  <xref derivedContent="" format="title" sectionFormat="of" target="name-security-considerations">Security Considerations</xref></t>
+          </li>
+          <li pn="section-toc.1-1.6">
+            <t indent="0" pn="section-toc.1-1.6.1"><xref derivedContent="6" format="counter" sectionFormat="of" target="section-6"/>.  <xref derivedContent="" format="title" sectionFormat="of" target="name-operational-considerations">Operational Considerations</xref></t>
+          </li>
+          <li pn="section-toc.1-1.7">
+            <t indent="0" pn="section-toc.1-1.7.1"><xref derivedContent="7" format="counter" sectionFormat="of" target="section-7"/>.  <xref derivedContent="" format="title" sectionFormat="of" target="name-iana-considerations">IANA Considerations</xref></t>
+            <ul bare="true" empty="true" indent="2" spacing="compact" pn="section-toc.1-1.7.2">
+              <li pn="section-toc.1-1.7.2.1">
+                <t indent="0" pn="section-toc.1-1.7.2.1.1"><xref derivedContent="7.1" format="counter" sectionFormat="of" target="section-7.1"/>.  <xref derivedContent="" format="title" sectionFormat="of" target="name-update-to-the-dns-security-">Update to the DNS Security Algorithm Numbers Registry</xref></t>
+              </li>
+              <li pn="section-toc.1-1.7.2.2">
+                <t indent="0" pn="section-toc.1-1.7.2.2.1"><xref derivedContent="7.2" format="counter" sectionFormat="of" target="section-7.2"/>.  <xref derivedContent="" format="title" sectionFormat="of" target="name-update-to-the-digest-algori">Update to the Digest Algorithms Registry</xref></t>
+              </li>
+            </ul>
+          </li>
+          <li pn="section-toc.1-1.8">
+            <t indent="0" pn="section-toc.1-1.8.1"><xref derivedContent="8" format="counter" sectionFormat="of" target="section-8"/>.  <xref derivedContent="" format="title" sectionFormat="of" target="name-references">References</xref></t>
+            <ul bare="true" empty="true" indent="2" spacing="compact" pn="section-toc.1-1.8.2">
+              <li pn="section-toc.1-1.8.2.1">
+                <t indent="0" pn="section-toc.1-1.8.2.1.1"><xref derivedContent="8.1" format="counter" sectionFormat="of" target="section-8.1"/>.  <xref derivedContent="" format="title" sectionFormat="of" target="name-normative-references">Normative References</xref></t>
+              </li>
+              <li pn="section-toc.1-1.8.2.2">
+                <t indent="0" pn="section-toc.1-1.8.2.2.1"><xref derivedContent="8.2" format="counter" sectionFormat="of" target="section-8.2"/>.  <xref derivedContent="" format="title" sectionFormat="of" target="name-informative-references">Informative References</xref></t>
+              </li>
+            </ul>
+          </li>
+          <li pn="section-toc.1-1.9">
+            <t indent="0" pn="section-toc.1-1.9.1"><xref derivedContent="" format="none" sectionFormat="of" target="section-appendix.a"/><xref derivedContent="" format="title" sectionFormat="of" target="name-acknowledgments">Acknowledgments</xref></t>
+          </li>
+          <li pn="section-toc.1-1.10">
+            <t indent="0" pn="section-toc.1-1.10.1"><xref derivedContent="" format="none" sectionFormat="of" target="section-appendix.b"/><xref derivedContent="" format="title" sectionFormat="of" target="name-authors-addresses">Authors' Addresses</xref></t>
+          </li>
+        </ul>
+      </section>
+    </toc>
+  </front>
+  <middle>
+    <section anchor="introduction" numbered="true" removeInRFC="false" toc="include" pn="section-1">
+      <name slugifiedName="name-introduction">Introduction</name>
+      <t indent="0" pn="section-1-1">"DNS Security Extensions (DNSSEC)" <xref target="RFC9364" format="default" sectionFormat="of" derivedContent="RFC9364"/> is used to provide
+   authentication of DNS data. The DNSSEC signing algorithms are
+   defined by various RFCs, including <xref target="RFC4034" format="default" sectionFormat="of" derivedContent="RFC4034"/>, <xref target="RFC4509" format="default" sectionFormat="of" derivedContent="RFC4509"/>, <xref target="RFC5155" format="default" sectionFormat="of" derivedContent="RFC5155"/>,
+   <xref target="RFC5702" format="default" sectionFormat="of" derivedContent="RFC5702"/>, <xref target="RFC5933" format="default" sectionFormat="of" derivedContent="RFC5933"/>, <xref target="RFC6605" format="default" sectionFormat="of" derivedContent="RFC6605"/>, and <xref target="RFC8080" format="default" sectionFormat="of" derivedContent="RFC8080"/>.</t>
+      <t indent="0" pn="section-1-2">To ensure interoperability, a set of "mandatory-to-implement"
+   DNS Public Key (DNSKEY) algorithms are defined in <xref target="RFC8624" format="default" sectionFormat="of" derivedContent="RFC8624"/>.  To make the current
+   status of the algorithms more easily accessible and understandable,
+   and to make future changes to these recommendations easier to
+   publish, this document moves the canonical status of the algorithms
+   from <xref target="RFC8624" format="default" sectionFormat="of" derivedContent="RFC8624"/> to the IANA DNSSEC algorithm registries.
+This document also incorporates 
+   the revised IANA DNSSEC considerations from <xref target="RFC9157" format="default" sectionFormat="of" derivedContent="RFC9157"/>.
+   Additionally, as advice to operators, it adds recommendations for
+   deploying and using these algorithms.</t>
+      <t indent="0" pn="section-1-3">This is similar to the process used for the "TLS Cipher Suites" registry <xref target="TLS-ciphersuites" format="default" sectionFormat="of" derivedContent="TLS-ciphersuites"/>,
+  where the canonical list of cipher suites is in the IANA registry, and
+  RFCs reference the IANA registry.</t>
+      <section anchor="document-audience" numbered="true" removeInRFC="false" toc="include" pn="section-1.1">
+        <name slugifiedName="name-document-audience">Document Audience</name>
+        <t indent="0" pn="section-1.1-1">The columns added to the IANA <xref target="DNSKEY-IANA" format="default" sectionFormat="of" derivedContent="DNSKEY-IANA">"DNS Security Algorithm Numbers"</xref>
+   and <xref target="DS-IANA" format="default" sectionFormat="of" derivedContent="DS-IANA">"Digest Algorithms"</xref> registries target DNSSEC operators and implementers.</t>
+        <t indent="0" pn="section-1.1-2">Implementations need to meet high security expectations as
+   well as provide interoperability between various implementations and with
+   different versions.</t>
+        <t indent="0" pn="section-1.1-3">The field of cryptography evolves continuously.  New, stronger algorithms
+   appear, and existing algorithms may be found to be less secure than
+   originally thought.  Therefore, algorithm implementation requirements and
+   usage guidance need to be updated from time to time in order to reflect the
+   new reality and to allow for a smooth transition to more secure algorithms
+   as well as the deprecation of algorithms deemed to no longer be secure.</t>
+        <t indent="0" pn="section-1.1-4">Implementations need to be conservative in the selection of
+   algorithms they implement in order to minimize both code complexity
+   and the  attack surface.</t>
+        <t indent="0" pn="section-1.1-5">The perspective of implementers may differ from that of an operator
+   who wishes to deploy and configure DNSSEC with only the safest
+   algorithm.  As such, this document also adds new recommendations
+   about which algorithms should be deployed regardless of
+   implementation status. In general, it is expected that deployment
+   of aging algorithms should generally be reduced before
+   implementations stop supporting them.</t>
+      </section>
+      <section anchor="updating-algorithm-requirement-levels" numbered="true" removeInRFC="false" toc="include" pn="section-1.2">
+        <name slugifiedName="name-updating-algorithm-requirem">Updating Algorithm Requirement Levels</name>
+        <t indent="0" pn="section-1.2-1">By the time a DNSSEC cryptographic algorithm is made
+   mandatory to implement, it should already be available in most
+   implementations.  This document defines an IANA registration
+   modification to allow future documents to specify the
+   implementation recommendations for each algorithm, as the
+   recommendation status of each DNSSEC cryptographic algorithm is
+   expected to change over time.  For example, there is no guarantee
+   that newly introduced algorithms will become mandatory to implement
+   in the future.  Likewise, published algorithms are continuously
+   subjected to cryptographic attack and may become too weak, or even
+   be completely broken, and will require deprecation in the future.</t>
+        <t indent="0" pn="section-1.2-2">It is expected that the deprecation of an algorithm will be performed
+   gradually.  This provides time for implementations to update
+   their implemented algorithms while remaining interoperable.  Unless
+   there are strong security reasons, an algorithm is expected to be
+   downgraded from <bcp14>MUST</bcp14> to <bcp14>NOT RECOMMENDED</bcp14> or <bcp14>MAY</bcp14>, instead of directly
+   from <bcp14>MUST</bcp14> to <bcp14>MUST NOT</bcp14>.  Similarly, an algorithm that has not been
+   mentioned as mandatory to implement is expected to be first introduced
+   as <bcp14>RECOMMENDED</bcp14> instead of a <bcp14>MUST</bcp14>.</t>
+        <t indent="0" pn="section-1.2-3">Since the effect of using an unknown DNSKEY algorithm is that the
+   zone is treated as insecure, it is recommended that algorithms
+   that have been downgraded to <bcp14>NOT RECOMMENDED</bcp14> or lower not be used
+   by authoritative nameservers and DNSSEC signers to create new
+   DNSKEYs.  This ensures that the use of deprecated algorithms
+   decreases over time.  Once an algorithm has reached a sufficiently
+   low level of deployment, it can be marked as <bcp14>MUST NOT</bcp14>, so that
+   recursive resolvers can remove support for validating it.</t>
+        <t indent="0" pn="section-1.2-4">Validating recursive resolvers are encouraged to retain support for all
+   algorithms not marked as <bcp14>MUST NOT</bcp14>.</t>
+      </section>
+      <section anchor="requirements-notation" numbered="true" removeInRFC="false" toc="include" pn="section-1.3">
+        <name slugifiedName="name-requirements-notation">Requirements Notation</name>
+        <t indent="0" pn="section-1.3-1">
+    The key words "<bcp14>MUST</bcp14>", "<bcp14>MUST NOT</bcp14>", "<bcp14>REQUIRED</bcp14>", "<bcp14>SHALL</bcp14>", "<bcp14>SHALL NOT</bcp14>", "<bcp14>SHOULD</bcp14>", "<bcp14>SHOULD NOT</bcp14>", "<bcp14>RECOMMENDED</bcp14>", "<bcp14>NOT RECOMMENDED</bcp14>",
+    "<bcp14>MAY</bcp14>", and "<bcp14>OPTIONAL</bcp14>" in this document are to be interpreted as
+    described in BCP 14 <xref target="RFC2119" format="default" sectionFormat="of" derivedContent="RFC2119"/> <xref target="RFC8174" format="default" sectionFormat="of" derivedContent="RFC8174"/> 
+    when, and only when, they appear in all capitals, as shown here.
+        </t>
+        <t indent="0" pn="section-1.3-2"><xref target="RFC2119" format="default" sectionFormat="of" derivedContent="RFC2119"/> considers the term <bcp14>SHOULD</bcp14> to be equivalent to <bcp14>RECOMMENDED</bcp14>, and
+   <bcp14>SHOULD NOT</bcp14> equivalent to <bcp14>NOT RECOMMENDED</bcp14>.  This document has
+   chosen to use the terms <bcp14>RECOMMENDED</bcp14> and <bcp14>NOT RECOMMENDED</bcp14>, as this
+   more clearly expresses the recommendations to implementers.</t>
+      </section>
+    </section>
+    <section anchor="adding-usage-and-implementation-recommendations-to-the-iana-dnssec-registries" numbered="true" removeInRFC="false" toc="include" pn="section-2">
+      <name slugifiedName="name-adding-usage-and-implementa">Adding Usage and Implementation Recommendations to the IANA DNSSEC Algorithm Registries</name>
+      <t indent="0" pn="section-2-1">Per this document, the following columns have been added to the
+   corresponding DNSSEC algorithm registries maintained by IANA:</t>
+      <table anchor="columns" align="center" pn="table-1">
+        <name slugifiedName="name-columns-added-to-existing-d">Columns Added to Existing DNSSEC Algorithm Registries</name>
+        <thead>
+          <tr>
+            <th align="left" colspan="1" rowspan="1">Registry</th>
+            <th align="left" colspan="1" rowspan="1">Column Added</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td align="left" colspan="1" rowspan="1">DNS Security Algorithm Numbers</td>
+            <td align="left" colspan="1" rowspan="1">Use for DNSSEC Signing</td>
+          </tr>
+          <tr>
+            <td align="left" colspan="1" rowspan="1">DNS Security Algorithm Numbers</td>
+            <td align="left" colspan="1" rowspan="1">Use for DNSSEC Validation</td>
+          </tr>
+          <tr>
+            <td align="left" colspan="1" rowspan="1">DNS Security Algorithm Numbers</td>
+            <td align="left" colspan="1" rowspan="1">Implement for DNSSEC Signing</td>
+          </tr>
+          <tr>
+            <td align="left" colspan="1" rowspan="1">DNS Security Algorithm Numbers</td>
+            <td align="left" colspan="1" rowspan="1">Implement for DNSSEC Validation</td>
+          </tr>
+          <tr>
+            <td align="left" colspan="1" rowspan="1">Digest Algorithms</td>
+            <td align="left" colspan="1" rowspan="1">Use for DNSSEC Delegation</td>
+          </tr>
+          <tr>
+            <td align="left" colspan="1" rowspan="1">Digest Algorithms</td>
+            <td align="left" colspan="1" rowspan="1">Use for DNSSEC Validation</td>
+          </tr>
+          <tr>
+            <td align="left" colspan="1" rowspan="1">Digest Algorithms</td>
+            <td align="left" colspan="1" rowspan="1">Implement for DNSSEC Delegation</td>
+          </tr>
+          <tr>
+            <td align="left" colspan="1" rowspan="1">Digest Algorithms</td>
+            <td align="left" colspan="1" rowspan="1">Implement for DNSSEC Validation</td>
+          </tr>
+        </tbody>
+      </table>
+      <section anchor="column-descriptions" numbered="true" removeInRFC="false" toc="include" pn="section-2.1">
+        <name slugifiedName="name-column-descriptions">Column Descriptions</name>
+        <t indent="0" pn="section-2.1-1">The intended usage of the four columns in the "DNS Security Algorithm
+Numbers" registry is as follows:</t>
+        <dl indent="3" newline="false" spacing="normal" pn="section-2.1-2">
+          <dt pn="section-2.1-2.1">Use for DNSSEC Signing:</dt>
+          <dd pn="section-2.1-2.2">
+            <t indent="0" pn="section-2.1-2.2.1">Indicates the recommendation for using the algorithm within
+authoritative servers.</t>
+          </dd>
+          <dt pn="section-2.1-2.3">Use for DNSSEC Validation:</dt>
+          <dd pn="section-2.1-2.4">
+            <t indent="0" pn="section-2.1-2.4.1">Indicates the recommendation for using the algorithm in DNSSEC
+validators.</t>
+          </dd>
+          <dt pn="section-2.1-2.5">Implement for DNSSEC Signing:</dt>
+          <dd pn="section-2.1-2.6">
+            <t indent="0" pn="section-2.1-2.6.1">Indicates the recommendation for implementing the algorithm within
+DNSSEC signing software.</t>
+          </dd>
+          <dt pn="section-2.1-2.7">Implement for DNSSEC Validation:</dt>
+          <dd pn="section-2.1-2.8">
+            <t indent="0" pn="section-2.1-2.8.1">Indicates the recommendation for implementing the algorithm within
+DNSSEC validators.</t>
+          </dd>
+        </dl>
+        <t indent="0" pn="section-2.1-3">The intended usage of the four columns in the "Digest Algorithms" registry is as follows:</t>
+        <dl indent="3" newline="false" spacing="normal" pn="section-2.1-4">
+          <dt pn="section-2.1-4.1">Use for DNSSEC Delegation:</dt>
+          <dd pn="section-2.1-4.2">
+            <t indent="0" pn="section-2.1-4.2.1">Indicates the recommendation for using the algorithm within
+authoritative servers.</t>
+          </dd>
+          <dt pn="section-2.1-4.3">Use for DNSSEC Validation:</dt>
+          <dd pn="section-2.1-4.4">
+            <t indent="0" pn="section-2.1-4.4.1">Indicates the recommendation for using the algorithm in DNSSEC
+validators.</t>
+          </dd>
+          <dt pn="section-2.1-4.5">Implement for DNSSEC Delegation:</dt>
+          <dd pn="section-2.1-4.6">
+            <t indent="0" pn="section-2.1-4.6.1">Indicates the recommendation for implementing the algorithm within
+authoritative servers.</t>
+          </dd>
+          <dt pn="section-2.1-4.7">Implement for DNSSEC Validation:</dt>
+          <dd pn="section-2.1-4.8">
+            <t indent="0" pn="section-2.1-4.8.1">Indicates the recommendation for implementing the algorithm within
+validating resolvers.</t>
+          </dd>
+        </dl>
+      </section>
+      <section anchor="adding-and-changing-values" numbered="true" removeInRFC="false" toc="include" pn="section-2.2">
+        <name slugifiedName="name-adding-and-changing-values">Adding and Changing Values</name>
+        <t indent="0" pn="section-2.2-1">
+  The following note describing the procedures for adding and
+  changing values has been added to the "DNS Security Algorithm
+  Numbers" registry:
+</t>
+        <blockquote pn="section-2.2-2">
+          <t indent="0" pn="section-2.2-2.1">Adding a new entry to the "DNS Security Algorithm Numbers" registry
+   with a recommended value of "<bcp14>MAY</bcp14>" in the "Use for DNSSEC Signing",
+   "Use for DNSSEC Validation", "Implement for DNSSEC Signing", or
+   "Implement for DNSSEC Validation" columns will be subject to the
+   Specification Required policy as defined in <xref target="RFC8126" format="default" sectionFormat="of" derivedContent="RFC8126"/> in order to
+   promote continued evolution of DNSSEC algorithms and DNSSEC
+   agility.  New entries added through the Specification Required
+   process will have the value of "<bcp14>MAY</bcp14>" for all columns.
+          </t>
+          <t indent="0" pn="section-2.2-2.2">Adding a new entry to, or changing an existing value in,
+   the "DNS Security Algorithm Numbers" registry that has any value other than "<bcp14>MAY</bcp14>" in the "Use for
+   DNSSEC Signing", "Use for DNSSEC Validation", "Implement for
+   DNSSEC Signing", or "Implement for DNSSEC Validation" columns requires Standards Action.</t>
+          <t indent="0" pn="section-2.2-2.3">If an item is not marked as "<bcp14>RECOMMENDED</bcp14>", it does not necessarily
+   mean that it is flawed; rather, it indicates that the item either
+   has not been through the IETF consensus process, has limited
+   applicability, or is intended only for specific use cases.</t>
+        </blockquote>
+        <t indent="0" pn="section-2.2-3">
+  The following note has been added to the "Digest Algorithms" registry:
+</t>
+        <blockquote pn="section-2.2-4">
+          <t indent="0" pn="section-2.2-4.1">Adding a new entry to the "Digest Algorithms" registry with a
+   recommended value of "<bcp14>MAY</bcp14>" in the "Use for DNSSEC Delegation",
+   "Use for DNSSEC Validation", "Implement for DNSSEC Delegation",
+   or "Implement for DNSSEC Validation" columns <bcp14>SHALL</bcp14> follow the
+	Specification Required policy as defined in <xref target="RFC8126" format="default" sectionFormat="of" derivedContent="RFC8126"/>.</t>
+          <t indent="0" pn="section-2.2-4.2">Adding a new entry to, or changing an existing value in,
+   the "Digest Algorithms" registry that has any value other than  "<bcp14>MAY</bcp14>" 
+   in the "Use for DNSSEC Delegation", "Use for DNSSEC Validation", "Implement for
+	DNSSEC Delegation", or "Implement for DNSSEC Validation" columns requires Standards Action.</t>
+          <t indent="0" pn="section-2.2-4.3">If an item is not marked as "<bcp14>RECOMMENDED</bcp14>", it does not necessarily
+   mean that it is flawed; rather, it indicates that the item either
+   has not been through the IETF consensus process, has limited
+   applicability, or is intended only for specific use cases.</t>
+        </blockquote>
+        <t indent="0" pn="section-2.2-5">Only values of "<bcp14>MAY</bcp14>", "<bcp14>RECOMMENDED</bcp14>", "<bcp14>MUST NOT</bcp14>", and "<bcp14>NOT RECOMMENDED</bcp14>" may be placed into the "Use for DNSSEC Signing" and
+   "Use for DNSSEC Validation" columns.  Only values of "<bcp14>MAY</bcp14>",
+   "<bcp14>RECOMMENDED</bcp14>", "<bcp14>MUST</bcp14>", "<bcp14>MUST NOT</bcp14>", and "<bcp14>NOT RECOMMENDED</bcp14>" may be
+   placed into the "Implement for DNSSEC Signing" and "Implement for
+   DNSSEC Validation" columns.  Note that a value of "<bcp14>MUST</bcp14>" is not an
+   allowed value for the two "Use for" columns.</t>
+        <t indent="0" pn="section-2.2-6">The following sections state the initial values that have been populated
+   into these columns. The values in the "Implement for" columns are transcribed
+   from <xref target="RFC8624" format="default" sectionFormat="of" derivedContent="RFC8624"/>. The "Use for" columns are set to the same values as
+   those in the "Implement for" columns since the general interpretation to date
+   indicates they have been treated as values for both
+   "use" and "implementation". Note that the value in the "Use for"
+   column is "<bcp14>RECOMMENDED</bcp14>" when the value in the corresponding "Implement
+   for" column is "<bcp14>MUST</bcp14>".  We note that the values for
+   "Implement for" and "Use for" may diverge in the future as 
+   implementations generally precede deployments.</t>
+      </section>
+    </section>
+    <section anchor="dns-system-algorithm-numbers-column-values" numbered="true" removeInRFC="false" toc="include" pn="section-3">
+      <name slugifiedName="name-dns-security-algorithm-numb">DNS Security Algorithm Numbers Registry Column Values</name>
+      <t indent="0" pn="section-3-1">Initial values for the use and implementation
+   recommendation columns in the "DNS Security Algorithm Numbers" registry under the "Domain Name System Security (DNSSEC) Algorithm Numbers" registry group are shown in <xref target="algtable" format="default" sectionFormat="of" derivedContent="Table 2"/>.</t>
+      <t indent="0" pn="section-3-2">When there are multiple
+   <bcp14>RECOMMENDED</bcp14> algorithms in the "Use for" columns, operators should choose
+      the best algorithm according to local policy.</t>
+      <table anchor="algtable" align="center" pn="table-2">
+        <name slugifiedName="name-initial-values-for-the-dns-">Initial Values for the DNS Security Algorithm Numbers Registry Columns</name>
+        <thead>
+          <tr>
+            <th align="left" colspan="1" rowspan="1">No.</th>
+            <th align="left" colspan="1" rowspan="1">Mnemonics</th>
+            <th align="left" colspan="1" rowspan="1">Use for DNSSEC Signing</th>
+            <th align="left" colspan="1" rowspan="1">Use for DNSSEC Validation</th>
+            <th align="left" colspan="1" rowspan="1">Implement for DNSSEC Signing</th>
+            <th align="left" colspan="1" rowspan="1">Implement for DNSSEC Validation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td align="left" colspan="1" rowspan="1">1</td>
+            <td align="left" colspan="1" rowspan="1">RSAMD5</td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>MUST NOT</bcp14></td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>MUST NOT</bcp14></td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>MUST NOT</bcp14></td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>MUST NOT</bcp14></td>
+          </tr>
+          <tr>
+            <td align="left" colspan="1" rowspan="1">3</td>
+            <td align="left" colspan="1" rowspan="1">DSA</td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>MUST NOT</bcp14></td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>MUST NOT</bcp14></td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>MUST NOT</bcp14></td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>MUST NOT</bcp14></td>
+          </tr>
+          <tr>
+            <td align="left" colspan="1" rowspan="1">5</td>
+            <td align="left" colspan="1" rowspan="1">RSASHA1</td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>NOT RECOMMENDED</bcp14></td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>RECOMMENDED</bcp14></td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>NOT RECOMMENDED</bcp14></td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>MUST</bcp14></td>
+          </tr>
+          <tr>
+            <td align="left" colspan="1" rowspan="1">6</td>
+            <td align="left" colspan="1" rowspan="1">DSA-NSEC3-SHA1</td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>MUST NOT</bcp14></td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>MUST NOT</bcp14></td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>MUST NOT</bcp14></td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>MUST NOT</bcp14></td>
+          </tr>
+          <tr>
+            <td align="left" colspan="1" rowspan="1">7</td>
+            <td align="left" colspan="1" rowspan="1">RSASHA1-NSEC3- SHA1</td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>NOT RECOMMENDED</bcp14></td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>RECOMMENDED</bcp14></td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>NOT RECOMMENDED</bcp14></td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>MUST</bcp14></td>
+          </tr>
+          <tr>
+            <td align="left" colspan="1" rowspan="1">8</td>
+            <td align="left" colspan="1" rowspan="1">RSASHA256</td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>RECOMMENDED</bcp14></td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>RECOMMENDED</bcp14></td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>MUST</bcp14></td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>MUST</bcp14></td>
+          </tr>
+          <tr>
+            <td align="left" colspan="1" rowspan="1">10</td>
+            <td align="left" colspan="1" rowspan="1">RSASHA512</td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>NOT RECOMMENDED</bcp14></td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>RECOMMENDED</bcp14></td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>NOT RECOMMENDED</bcp14></td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>MUST</bcp14></td>
+          </tr>
+          <tr>
+            <td align="left" colspan="1" rowspan="1">12</td>
+            <td align="left" colspan="1" rowspan="1">ECC-GOST</td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>MUST NOT</bcp14></td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>MAY</bcp14></td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>MUST NOT</bcp14></td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>MAY</bcp14></td>
+          </tr>
+          <tr>
+            <td align="left" colspan="1" rowspan="1">13</td>
+            <td align="left" colspan="1" rowspan="1">ECDSAP256SHA256</td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>RECOMMENDED</bcp14></td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>RECOMMENDED</bcp14></td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>MUST</bcp14></td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>MUST</bcp14></td>
+          </tr>
+          <tr>
+            <td align="left" colspan="1" rowspan="1">14</td>
+            <td align="left" colspan="1" rowspan="1">ECDSAP384SHA384</td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>MAY</bcp14></td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>RECOMMENDED</bcp14></td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>MAY</bcp14></td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>RECOMMENDED</bcp14></td>
+          </tr>
+          <tr>
+            <td align="left" colspan="1" rowspan="1">15</td>
+            <td align="left" colspan="1" rowspan="1">ED25519</td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>RECOMMENDED</bcp14></td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>RECOMMENDED</bcp14></td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>RECOMMENDED</bcp14></td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>RECOMMENDED</bcp14></td>
+          </tr>
+          <tr>
+            <td align="left" colspan="1" rowspan="1">16</td>
+            <td align="left" colspan="1" rowspan="1">ED448</td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>MAY</bcp14></td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>RECOMMENDED</bcp14></td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>MAY</bcp14></td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>RECOMMENDED</bcp14></td>
+          </tr>
+          <tr>
+            <td align="left" colspan="1" rowspan="1">17</td>
+            <td align="left" colspan="1" rowspan="1">SM2SM3</td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>MAY</bcp14></td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>MAY</bcp14></td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>MAY</bcp14></td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>MAY</bcp14></td>
+          </tr>
+          <tr>
+            <td align="left" colspan="1" rowspan="1">23</td>
+            <td align="left" colspan="1" rowspan="1">ECC-GOST12</td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>MAY</bcp14></td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>MAY</bcp14></td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>MAY</bcp14></td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>MAY</bcp14></td>
+          </tr>
+          <tr>
+            <td align="left" colspan="1" rowspan="1">253</td>
+            <td align="left" colspan="1" rowspan="1">PRIVATEDNS</td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>MAY</bcp14></td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>MAY</bcp14></td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>MAY</bcp14></td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>MAY</bcp14></td>
+          </tr>
+          <tr>
+            <td align="left" colspan="1" rowspan="1">254</td>
+            <td align="left" colspan="1" rowspan="1">PRIVATEOID</td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>MAY</bcp14></td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>MAY</bcp14></td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>MAY</bcp14></td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>MAY</bcp14></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+    <section anchor="dnssec-delegation-signer-ds-resource-record-rr-type-digest-algorithms-column-values" numbered="true" removeInRFC="false" toc="include" pn="section-4">
+      <name slugifiedName="name-digest-algorithms-registry-">Digest Algorithms Registry Column Values</name>
+      <t indent="0" pn="section-4-1">Initial values for the use and implementation
+   recommendation columns in the "Digest Algorithms" registry under the "DNSSEC Delegation Signer (DS) Resource Record (RR) Type Digest Algorithms" registry group are shown in <xref target="dstable" format="default" sectionFormat="of" derivedContent="Table 3"/>.</t>
+      <t indent="0" pn="section-4-2">When there are multiple <bcp14>RECOMMENDED</bcp14> algorithms in the "Use for" columns,
+   operators should choose the best algorithm according to local
+   policy.</t>
+      <table anchor="dstable" align="center" pn="table-3">
+        <name slugifiedName="name-initial-values-for-the-dige">Initial Values for the Digest Algorithms Registry Columns</name>
+        <thead>
+          <tr>
+            <th align="left" colspan="1" rowspan="1">Value</th>
+            <th align="left" colspan="1" rowspan="1">Description</th>
+            <th align="left" colspan="1" rowspan="1">Use for DNSSEC Delegation</th>
+            <th align="left" colspan="1" rowspan="1">Use for DNSSEC Validation</th>
+            <th align="left" colspan="1" rowspan="1">Implement for DNSSEC Delegation</th>
+            <th align="left" colspan="1" rowspan="1">Implement for DNSSEC Validation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td align="left" colspan="1" rowspan="1">0</td>
+            <td align="left" colspan="1" rowspan="1">NULL (CDS only)</td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>MUST NOT</bcp14></td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>MUST NOT</bcp14></td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>MUST NOT</bcp14></td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>MUST NOT</bcp14></td>
+          </tr>
+          <tr>
+            <td align="left" colspan="1" rowspan="1">1</td>
+            <td align="left" colspan="1" rowspan="1">SHA-1</td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>MUST NOT</bcp14></td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>RECOMMENDED</bcp14></td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>MUST NOT</bcp14></td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>MUST</bcp14></td>
+          </tr>
+          <tr>
+            <td align="left" colspan="1" rowspan="1">2</td>
+            <td align="left" colspan="1" rowspan="1">SHA-256</td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>RECOMMENDED</bcp14></td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>RECOMMENDED</bcp14></td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>MUST</bcp14></td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>MUST</bcp14></td>
+          </tr>
+          <tr>
+            <td align="left" colspan="1" rowspan="1">3</td>
+            <td align="left" colspan="1" rowspan="1">GOST R 34.11-94</td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>MUST NOT</bcp14></td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>MAY</bcp14></td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>MUST NOT</bcp14></td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>MAY</bcp14></td>
+          </tr>
+          <tr>
+            <td align="left" colspan="1" rowspan="1">4</td>
+            <td align="left" colspan="1" rowspan="1">SHA-384</td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>MAY</bcp14></td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>RECOMMENDED</bcp14></td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>MAY</bcp14></td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>RECOMMENDED</bcp14></td>
+          </tr>
+          <tr>
+            <td align="left" colspan="1" rowspan="1">5</td>
+            <td align="left" colspan="1" rowspan="1">GOST R 34.11-2012</td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>MAY</bcp14></td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>MAY</bcp14></td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>MAY</bcp14></td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>MAY</bcp14></td>
+          </tr>
+          <tr>
+            <td align="left" colspan="1" rowspan="1">6</td>
+            <td align="left" colspan="1" rowspan="1">SM3</td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>MAY</bcp14></td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>MAY</bcp14></td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>MAY</bcp14></td>
+            <td align="left" colspan="1" rowspan="1">
+              <bcp14>MAY</bcp14></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+    <section anchor="security-considerations" numbered="true" removeInRFC="false" toc="include" pn="section-5">
+      <name slugifiedName="name-security-considerations">Security Considerations</name>
+      <t indent="0" pn="section-5-1">The security of cryptographic systems depends on the strength of
+   both the cryptographic algorithms chosen and the keys used
+   with those algorithms.  The security also depends on the engineering
+   of the protocol used by the system to ensure that there are no non-
+   cryptographic ways to bypass the security of the overall system.</t>
+      <t indent="0" pn="section-5-2">This document concerns itself with the selection of cryptographic algorithms
+   for the use of DNSSEC, specifically with the selection of
+   "mandatory-to-implement" algorithms.  In this document, the algorithms identified as <bcp14>MUST</bcp14> or <bcp14>RECOMMENDED</bcp14> to implement are not known to be broken at
+   the current time, and cryptographic research so far leads us to believe that
+   they are likely to remain adequately secure unless significant and
+   unexpected discovery is made. However, this isn't necessarily forever, and
+   it is expected that future documents will be issued from time to time to
+   reflect the current best practices in this area.</t>
+      <t indent="0" pn="section-5-3">Retiring an algorithm too soon would result in a zone signed with
+   the retired algorithm being downgraded to the equivalent of an
+   unsigned zone.  Therefore, algorithm deprecation must be done only
+   after careful consideration and ideally slowly when possible.</t>
+    </section>
+    <section anchor="operational-considerations" numbered="true" removeInRFC="false" toc="include" pn="section-6">
+      <name slugifiedName="name-operational-considerations">Operational Considerations</name>
+      <t indent="0" pn="section-6-1">DNSKEY algorithm rollover in a live zone is a complex process.  See
+   <xref target="RFC6781" format="default" sectionFormat="of" derivedContent="RFC6781"/> and <xref target="RFC7583" format="default" sectionFormat="of" derivedContent="RFC7583"/> for guidelines on how to perform algorithm
+   rollovers.</t>
+      <t indent="0" pn="section-6-2">DS algorithm rollover in a live zone is also a complex process.
+   Upgrading an algorithm at the same time as rolling to the new Key
+   Signing Key (KSK) key will lead to DNSSEC validation failures, and
+   users <bcp14>MUST</bcp14> upgrade the DS algorithm first before rolling to a new
+   KSK.</t>
+    </section>
+    <section anchor="iana-considerations" numbered="true" removeInRFC="false" toc="include" pn="section-7">
+      <name slugifiedName="name-iana-considerations">IANA Considerations</name>
+      <t indent="0" pn="section-7-1">IANA has updated the "DNS Security Algorithm Numbers" <xref target="DNSKEY-IANA" format="default" sectionFormat="of" derivedContent="DNSKEY-IANA"/> and "Digest Algorithms" <xref target="DS-IANA" format="default" sectionFormat="of" derivedContent="DS-IANA"/> registries
+  according to the sections that follow.</t>
+      <section anchor="update-to-the-dns-security-algorithm-numbers-registry" numbered="true" removeInRFC="false" toc="include" pn="section-7.1">
+        <name slugifiedName="name-update-to-the-dns-security-">Update to the DNS Security Algorithm Numbers Registry</name>
+        <t indent="0" pn="section-7.1-1">IANA has updated the "DNS Security Algorithm
+  Numbers" registry <xref target="DNSKEY-IANA" format="default" sectionFormat="of" derivedContent="DNSKEY-IANA"/> with the following
+  columns and has populated these columns with the values from <xref target="algtable" format="default" sectionFormat="of" derivedContent="Table 2"/> of this document:</t>
+        <ul spacing="normal" bare="false" empty="false" indent="3" pn="section-7.1-2">
+          <li pn="section-7.1-2.1">
+            <t indent="0" pn="section-7.1-2.1.1">"Use for DNSSEC Signing"</t>
+          </li>
+          <li pn="section-7.1-2.2">
+            <t indent="0" pn="section-7.1-2.2.1">"Use for DNSSEC Validation"</t>
+          </li>
+          <li pn="section-7.1-2.3">
+            <t indent="0" pn="section-7.1-2.3.1">"Implement for DNSSEC Signing"</t>
+          </li>
+          <li pn="section-7.1-2.4">
+            <t indent="0" pn="section-7.1-2.4.1">"Implement for DNSSEC Validation"</t>
+          </li>
+        </ul>
+        <t indent="0" pn="section-7.1-3">Additionally, IANA has completed the following actions for the "DNS Security 
+   Algorithm Numbers" registry <xref target="DNSKEY-IANA" format="default" sectionFormat="of" derivedContent="DNSKEY-IANA"/>:</t>
+        <ul spacing="normal" bare="false" empty="false" indent="3" pn="section-7.1-4">
+          <li pn="section-7.1-4.1">Changed the registration procedure to Standards Action or
+      Specification Required.
+    </li>
+          <li pn="section-7.1-4.2">Added a note to the registry that describes the values not marked as
+      "<bcp14>RECOMMENDED</bcp14>" per <xref target="adding-and-changing-values" format="default" sectionFormat="of" derivedContent="Section 2.2"/>.
+    </li>
+          <li pn="section-7.1-4.3">Listed this document as an additional reference for the registry.
+    </li>
+        </ul>
+      </section>
+      <section anchor="update-to-the-digest-algorithms-registry" numbered="true" removeInRFC="false" toc="include" pn="section-7.2">
+        <name slugifiedName="name-update-to-the-digest-algori">Update to the Digest Algorithms Registry</name>
+        <t indent="0" pn="section-7.2-1">IANA has updated the "Digest Algorithms" registry
+  <xref target="DS-IANA" format="default" sectionFormat="of" derivedContent="DS-IANA"/> with the following columns and has populated these columns with the values from <xref target="dstable" format="default" sectionFormat="of" derivedContent="Table 3"/> of this document:</t>
+        <ul spacing="normal" bare="false" empty="false" indent="3" pn="section-7.2-2">
+          <li pn="section-7.2-2.1">
+            <t indent="0" pn="section-7.2-2.1.1">"Use for DNSSEC Delegation"</t>
+          </li>
+          <li pn="section-7.2-2.2">
+            <t indent="0" pn="section-7.2-2.2.1">"Use for DNSSEC Validation"</t>
+          </li>
+          <li pn="section-7.2-2.3">
+            <t indent="0" pn="section-7.2-2.3.1">"Implement for DNSSEC Delegation"</t>
+          </li>
+          <li pn="section-7.2-2.4">
+            <t indent="0" pn="section-7.2-2.4.1">"Implement for DNSSEC Validation"</t>
+          </li>
+        </ul>
+        <t indent="0" pn="section-7.2-3">Additionally, IANA has completed the following actions for the "Digest Algorithms" registry <xref target="DS-IANA" format="default" sectionFormat="of" derivedContent="DS-IANA"/>:
+        </t>
+        <ul spacing="normal" bare="false" empty="false" indent="3" pn="section-7.2-4">
+          <li pn="section-7.2-4.1">
+            <t indent="0" pn="section-7.2-4.1.1">Changed the registration procedure to Standards Action or Specification Required.</t>
+          </li>
+          <li pn="section-7.2-4.2">Added a note to the registry that describes the values not marked as
+      "<bcp14>RECOMMENDED</bcp14>" per <xref target="adding-and-changing-values" format="default" sectionFormat="of" derivedContent="Section 2.2"/>.
+    </li>
+          <li pn="section-7.2-4.3">Listed this document as an additional reference for the registry.
+	  </li>
+          <li pn="section-7.2-4.4">
+            <t indent="0" pn="section-7.2-4.4.1">Marked values 128-252 as "Reserved".</t>
+          </li>
+          <li pn="section-7.2-4.5">
+            <t indent="0" pn="section-7.2-4.5.1">Marked values 253 and 254 as "Reserved for Private Use".</t>
+          </li>
+          <li pn="section-7.2-4.6">
+            <t indent="0" pn="section-7.2-4.6.1">Deleted the (now superfluous) column "Status" from the registry.</t>
+          </li>
+        </ul>
+      </section>
+    </section>
+  </middle>
+  <back>
+    <references anchor="sec-combined-references" pn="section-8">
+      <name slugifiedName="name-references">References</name>
+      <references anchor="sec-normative-references" pn="section-8.1">
+        <name slugifiedName="name-normative-references">Normative References</name>
+        <reference anchor="DNSKEY-IANA" target="https://www.iana.org/assignments/dns-sec-alg-numbers" quoteTitle="true" derivedAnchor="DNSKEY-IANA">
+          <front>
+            <title>DNS Security Algorithm Numbers</title>
+            <author>
+              <organization showOnFrontPage="true">IANA</organization>
+            </author>
+          </front>
+        </reference>
+        <reference anchor="DS-IANA" target="http://www.iana.org/assignments/ds-rr-types" quoteTitle="true" derivedAnchor="DS-IANA">
+          <front>
+            <title>Digest Algorithms</title>
+            <author>
+              <organization showOnFrontPage="true">IANA</organization>
+            </author>
+          </front>
+        </reference>
+        <reference anchor="RFC2119" target="https://www.rfc-editor.org/info/rfc2119" quoteTitle="true" derivedAnchor="RFC2119">
+          <front>
+            <title>Key words for use in RFCs to Indicate Requirement Levels</title>
+            <author fullname="S. Bradner" initials="S." surname="Bradner"/>
+            <date month="March" year="1997"/>
+            <abstract>
+              <t indent="0">In many standards track documents several words are used to signify the requirements in the specification. These words are often capitalized. This document defines these words as they should be interpreted in IETF documents. This document specifies an Internet Best Current Practices for the Internet Community, and requests discussion and suggestions for improvements.</t>
+            </abstract>
+          </front>
+          <seriesInfo name="BCP" value="14"/>
+          <seriesInfo name="RFC" value="2119"/>
+          <seriesInfo name="DOI" value="10.17487/RFC2119"/>
+        </reference>
+        <reference anchor="RFC8126" target="https://www.rfc-editor.org/info/rfc8126" quoteTitle="true" derivedAnchor="RFC8126">
+          <front>
+            <title>Guidelines for Writing an IANA Considerations Section in RFCs</title>
+            <author fullname="M. Cotton" initials="M." surname="Cotton"/>
+            <author fullname="B. Leiba" initials="B." surname="Leiba"/>
+            <author fullname="T. Narten" initials="T." surname="Narten"/>
+            <date month="June" year="2017"/>
+            <abstract>
+              <t indent="0">Many protocols make use of points of extensibility that use constants to identify various protocol parameters. To ensure that the values in these fields do not have conflicting uses and to promote interoperability, their allocations are often coordinated by a central record keeper. For IETF protocols, that role is filled by the Internet Assigned Numbers Authority (IANA).</t>
+              <t indent="0">To make assignments in a given registry prudently, guidance describing the conditions under which new values should be assigned, as well as when and how modifications to existing values can be made, is needed. This document defines a framework for the documentation of these guidelines by specification authors, in order to assure that the provided guidance for the IANA Considerations is clear and addresses the various issues that are likely in the operation of a registry.</t>
+              <t indent="0">This is the third edition of this document; it obsoletes RFC 5226.</t>
+            </abstract>
+          </front>
+          <seriesInfo name="BCP" value="26"/>
+          <seriesInfo name="RFC" value="8126"/>
+          <seriesInfo name="DOI" value="10.17487/RFC8126"/>
+        </reference>
+        <reference anchor="RFC8174" target="https://www.rfc-editor.org/info/rfc8174" quoteTitle="true" derivedAnchor="RFC8174">
+          <front>
+            <title>Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words</title>
+            <author fullname="B. Leiba" initials="B." surname="Leiba"/>
+            <date month="May" year="2017"/>
+            <abstract>
+              <t indent="0">RFC 2119 specifies common key words that may be used in protocol specifications. This document aims to reduce the ambiguity by clarifying that only UPPERCASE usage of the key words have the defined special meanings.</t>
+            </abstract>
+          </front>
+          <seriesInfo name="BCP" value="14"/>
+          <seriesInfo name="RFC" value="8174"/>
+          <seriesInfo name="DOI" value="10.17487/RFC8174"/>
+        </reference>
+        <reference anchor="RFC9157" target="https://www.rfc-editor.org/info/rfc9157" quoteTitle="true" derivedAnchor="RFC9157">
+          <front>
+            <title>Revised IANA Considerations for DNSSEC</title>
+            <author fullname="P. Hoffman" initials="P." surname="Hoffman"/>
+            <date month="December" year="2021"/>
+            <abstract>
+              <t indent="0">This document changes the review requirements needed to get DNSSEC algorithms and resource records added to IANA registries. It updates RFC 6014 to include hash algorithms for Delegation Signer (DS) records and NextSECure version 3 (NSEC3) parameters (for Hashed Authenticated Denial of Existence). It also updates RFCs 5155 and 6014, which have requirements for DNSSEC algorithms, and updates RFC 8624 to clarify the implementation recommendation related to the algorithms described in RFCs that are not on the standards track. The rationale for these changes is to bring the requirements for DS records and hash algorithms used in NSEC3 in line with the requirements for all other DNSSEC algorithms.</t>
+            </abstract>
+          </front>
+          <seriesInfo name="RFC" value="9157"/>
+          <seriesInfo name="DOI" value="10.17487/RFC9157"/>
+        </reference>
+      </references>
+      <references anchor="sec-informative-references" pn="section-8.2">
+        <name slugifiedName="name-informative-references">Informative References</name>
+        <reference anchor="RFC4034" target="https://www.rfc-editor.org/info/rfc4034" quoteTitle="true" derivedAnchor="RFC4034">
+          <front>
+            <title>Resource Records for the DNS Security Extensions</title>
+            <author fullname="R. Arends" initials="R." surname="Arends"/>
+            <author fullname="R. Austein" initials="R." surname="Austein"/>
+            <author fullname="M. Larson" initials="M." surname="Larson"/>
+            <author fullname="D. Massey" initials="D." surname="Massey"/>
+            <author fullname="S. Rose" initials="S." surname="Rose"/>
+            <date month="March" year="2005"/>
+            <abstract>
+              <t indent="0">This document is part of a family of documents that describe the DNS Security Extensions (DNSSEC). The DNS Security Extensions are a collection of resource records and protocol modifications that provide source authentication for the DNS. This document defines the public key (DNSKEY), delegation signer (DS), resource record digital signature (RRSIG), and authenticated denial of existence (NSEC) resource records. The purpose and format of each resource record is described in detail, and an example of each resource record is given.</t>
+              <t indent="0">This document obsoletes RFC 2535 and incorporates changes from all updates to RFC 2535. [STANDARDS-TRACK]</t>
+            </abstract>
+          </front>
+          <seriesInfo name="RFC" value="4034"/>
+          <seriesInfo name="DOI" value="10.17487/RFC4034"/>
+        </reference>
+        <reference anchor="RFC4509" target="https://www.rfc-editor.org/info/rfc4509" quoteTitle="true" derivedAnchor="RFC4509">
+          <front>
+            <title>Use of SHA-256 in DNSSEC Delegation Signer (DS) Resource Records (RRs)</title>
+            <author fullname="W. Hardaker" initials="W." surname="Hardaker"/>
+            <date month="May" year="2006"/>
+            <abstract>
+              <t indent="0">This document specifies how to use the SHA-256 digest type in DNS Delegation Signer (DS) Resource Records (RRs). DS records, when stored in a parent zone, point to DNSKEYs in a child zone. [STANDARDS-TRACK]</t>
+            </abstract>
+          </front>
+          <seriesInfo name="RFC" value="4509"/>
+          <seriesInfo name="DOI" value="10.17487/RFC4509"/>
+        </reference>
+        <reference anchor="RFC5155" target="https://www.rfc-editor.org/info/rfc5155" quoteTitle="true" derivedAnchor="RFC5155">
+          <front>
+            <title>DNS Security (DNSSEC) Hashed Authenticated Denial of Existence</title>
+            <author fullname="B. Laurie" initials="B." surname="Laurie"/>
+            <author fullname="G. Sisson" initials="G." surname="Sisson"/>
+            <author fullname="R. Arends" initials="R." surname="Arends"/>
+            <author fullname="D. Blacka" initials="D." surname="Blacka"/>
+            <date month="March" year="2008"/>
+            <abstract>
+              <t indent="0">The Domain Name System Security (DNSSEC) Extensions introduced the NSEC resource record (RR) for authenticated denial of existence. This document introduces an alternative resource record, NSEC3, which similarly provides authenticated denial of existence. However, it also provides measures against zone enumeration and permits gradual expansion of delegation-centric zones. [STANDARDS-TRACK]</t>
+            </abstract>
+          </front>
+          <seriesInfo name="RFC" value="5155"/>
+          <seriesInfo name="DOI" value="10.17487/RFC5155"/>
+        </reference>
+        <reference anchor="RFC5702" target="https://www.rfc-editor.org/info/rfc5702" quoteTitle="true" derivedAnchor="RFC5702">
+          <front>
+            <title>Use of SHA-2 Algorithms with RSA in DNSKEY and RRSIG Resource Records for DNSSEC</title>
+            <author fullname="J. Jansen" initials="J." surname="Jansen"/>
+            <date month="October" year="2009"/>
+            <abstract>
+              <t indent="0">This document describes how to produce RSA/SHA-256 and RSA/SHA-512 DNSKEY and RRSIG resource records for use in the Domain Name System Security Extensions (RFC 4033, RFC 4034, and RFC 4035). [STANDARDS TRACK]</t>
+            </abstract>
+          </front>
+          <seriesInfo name="RFC" value="5702"/>
+          <seriesInfo name="DOI" value="10.17487/RFC5702"/>
+        </reference>
+        <reference anchor="RFC5933" target="https://www.rfc-editor.org/info/rfc5933" quoteTitle="true" derivedAnchor="RFC5933">
+          <front>
+            <title>Use of GOST Signature Algorithms in DNSKEY and RRSIG Resource Records for DNSSEC</title>
+            <author fullname="V. Dolmatov" initials="V." role="editor" surname="Dolmatov"/>
+            <author fullname="A. Chuprina" initials="A." surname="Chuprina"/>
+            <author fullname="I. Ustinov" initials="I." surname="Ustinov"/>
+            <date month="July" year="2010"/>
+            <abstract>
+              <t indent="0">This document describes how to produce digital signatures and hash functions using the GOST R 34.10-2001 and GOST R 34.11-94 algorithms for DNSKEY, RRSIG, and DS resource records, for use in the Domain Name System Security Extensions (DNSSEC).</t>
+            </abstract>
+          </front>
+          <seriesInfo name="RFC" value="5933"/>
+          <seriesInfo name="DOI" value="10.17487/RFC5933"/>
+        </reference>
+        <reference anchor="RFC6605" target="https://www.rfc-editor.org/info/rfc6605" quoteTitle="true" derivedAnchor="RFC6605">
+          <front>
+            <title>Elliptic Curve Digital Signature Algorithm (DSA) for DNSSEC</title>
+            <author fullname="P. Hoffman" initials="P." surname="Hoffman"/>
+            <author fullname="W.C.A. Wijngaards" initials="W.C.A." surname="Wijngaards"/>
+            <date month="April" year="2012"/>
+            <abstract>
+              <t indent="0">This document describes how to specify Elliptic Curve Digital Signature Algorithm (DSA) keys and signatures in DNS Security (DNSSEC). It lists curves of different sizes and uses the SHA-2 family of hashes for signatures. [STANDARDS-TRACK]</t>
+            </abstract>
+          </front>
+          <seriesInfo name="RFC" value="6605"/>
+          <seriesInfo name="DOI" value="10.17487/RFC6605"/>
+        </reference>
+        <reference anchor="RFC6781" target="https://www.rfc-editor.org/info/rfc6781" quoteTitle="true" derivedAnchor="RFC6781">
+          <front>
+            <title>DNSSEC Operational Practices, Version 2</title>
+            <author fullname="O. Kolkman" initials="O." surname="Kolkman"/>
+            <author fullname="W. Mekking" initials="W." surname="Mekking"/>
+            <author fullname="R. Gieben" initials="R." surname="Gieben"/>
+            <date month="December" year="2012"/>
+            <abstract>
+              <t indent="0">This document describes a set of practices for operating the DNS with security extensions (DNSSEC). The target audience is zone administrators deploying DNSSEC.</t>
+              <t indent="0">The document discusses operational aspects of using keys and signatures in the DNS. It discusses issues of key generation, key storage, signature generation, key rollover, and related policies.</t>
+              <t indent="0">This document obsoletes RFC 4641, as it covers more operational ground and gives more up-to-date requirements with respect to key sizes and the DNSSEC operations.</t>
+            </abstract>
+          </front>
+          <seriesInfo name="RFC" value="6781"/>
+          <seriesInfo name="DOI" value="10.17487/RFC6781"/>
+        </reference>
+        <reference anchor="RFC7583" target="https://www.rfc-editor.org/info/rfc7583" quoteTitle="true" derivedAnchor="RFC7583">
+          <front>
+            <title>DNSSEC Key Rollover Timing Considerations</title>
+            <author fullname="S. Morris" initials="S." surname="Morris"/>
+            <author fullname="J. Ihren" initials="J." surname="Ihren"/>
+            <author fullname="J. Dickinson" initials="J." surname="Dickinson"/>
+            <author fullname="W. Mekking" initials="W." surname="Mekking"/>
+            <date month="October" year="2015"/>
+            <abstract>
+              <t indent="0">This document describes the issues surrounding the timing of events in the rolling of a key in a DNSSEC-secured zone. It presents timelines for the key rollover and explicitly identifies the relationships between the various parameters affecting the process.</t>
+            </abstract>
+          </front>
+          <seriesInfo name="RFC" value="7583"/>
+          <seriesInfo name="DOI" value="10.17487/RFC7583"/>
+        </reference>
+        <reference anchor="RFC8080" target="https://www.rfc-editor.org/info/rfc8080" quoteTitle="true" derivedAnchor="RFC8080">
+          <front>
+            <title>Edwards-Curve Digital Security Algorithm (EdDSA) for DNSSEC</title>
+            <author fullname="O. Sury" initials="O." surname="Sury"/>
+            <author fullname="R. Edmonds" initials="R." surname="Edmonds"/>
+            <date month="February" year="2017"/>
+            <abstract>
+              <t indent="0">This document describes how to specify Edwards-curve Digital Security Algorithm (EdDSA) keys and signatures in DNS Security (DNSSEC). It uses EdDSA with the choice of two curves: Ed25519 and Ed448.</t>
+            </abstract>
+          </front>
+          <seriesInfo name="RFC" value="8080"/>
+          <seriesInfo name="DOI" value="10.17487/RFC8080"/>
+        </reference>
+        <reference anchor="RFC8624" target="https://www.rfc-editor.org/info/rfc8624" quoteTitle="true" derivedAnchor="RFC8624">
+          <front>
+            <title>Algorithm Implementation Requirements and Usage Guidance for DNSSEC</title>
+            <author fullname="P. Wouters" initials="P." surname="Wouters"/>
+            <author fullname="O. Sury" initials="O." surname="Sury"/>
+            <date month="June" year="2019"/>
+            <abstract>
+              <t indent="0">The DNSSEC protocol makes use of various cryptographic algorithms in order to provide authentication of DNS data and proof of nonexistence. To ensure interoperability between DNS resolvers and DNS authoritative servers, it is necessary to specify a set of algorithm implementation requirements and usage guidelines to ensure that there is at least one algorithm that all implementations support. This document defines the current algorithm implementation requirements and usage guidance for DNSSEC. This document obsoletes RFC 6944.</t>
+            </abstract>
+          </front>
+          <seriesInfo name="RFC" value="8624"/>
+          <seriesInfo name="DOI" value="10.17487/RFC8624"/>
+        </reference>
+        <reference anchor="RFC9364" target="https://www.rfc-editor.org/info/rfc9364" quoteTitle="true" derivedAnchor="RFC9364">
+          <front>
+            <title>DNS Security Extensions (DNSSEC)</title>
+            <author fullname="P. Hoffman" initials="P." surname="Hoffman"/>
+            <date month="February" year="2023"/>
+            <abstract>
+              <t indent="0">This document describes the DNS Security Extensions (commonly called "DNSSEC") that are specified in RFCs 4033, 4034, and 4035, as well as a handful of others. One purpose is to introduce all of the RFCs in one place so that the reader can understand the many aspects of DNSSEC. This document does not update any of those RFCs. A second purpose is to state that using DNSSEC for origin authentication of DNS data is the best current practice. A third purpose is to provide a single reference for other documents that want to refer to DNSSEC.</t>
+            </abstract>
+          </front>
+          <seriesInfo name="BCP" value="237"/>
+          <seriesInfo name="RFC" value="9364"/>
+          <seriesInfo name="DOI" value="10.17487/RFC9364"/>
+        </reference>
+        <reference anchor="TLS-ciphersuites" target="https://www.iana.org/assignments/tls-parameters" quoteTitle="true" derivedAnchor="TLS-ciphersuites">
+          <front>
+            <title>Transport Layer Security (TLS) Parameters</title>
+            <author>
+              <organization showOnFrontPage="true">IANA</organization>
+            </author>
+          </front>
+        </reference>
+      </references>
+    </references>
+    <section anchor="acknowledgments" numbered="false" removeInRFC="false" toc="include" pn="section-appendix.a">
+      <name slugifiedName="name-acknowledgments">Acknowledgments</name>
+      <t indent="0" pn="section-appendix.a-1">This document is based on, and extends, RFC 8624, which was authored
+      by <contact fullname="Paul Wouters"/> and <contact fullname="Ondrej       Sury"/>.</t>
+      <t indent="0" pn="section-appendix.a-2">The content of this document was heavily discussed by participants of
+      the DNSOP Working Group.  The authors appreciate the thoughtfulness of
+      the many opinions expressed by working group participants that all
+      helped shaped this document. We thank <contact fullname="Paul Hoffman"/>
+      and <contact fullname="Paul Wouters"/> for their contributed text and
+      also <contact fullname="Nabeel Cocker"/>, <contact fullname="Shumon       Huque"/>, <contact fullname="Nicolai Leymann"/>, <contact fullname="S.       Moonesamy"/>, <contact fullname="Magnus Nyström"/>, <contact fullname="Peter Thomassen"/>, <contact fullname="Stefan Ubbink"/>, and
+      <contact fullname="Loganaden Velvindron"/> for their reviews and
+      comments.</t>
+    </section>
+    <section anchor="authors-addresses" numbered="false" removeInRFC="false" toc="include" pn="section-appendix.b">
+      <name slugifiedName="name-authors-addresses">Authors' Addresses</name>
+      <author initials="W." surname="Hardaker" fullname="Wes Hardaker">
+        <organization showOnFrontPage="true">USC/ISI</organization>
+        <address>
+          <email>ietf@hardakers.net</email>
+        </address>
+      </author>
+      <author initials="W." surname="Kumari" fullname="Warren Kumari">
+        <organization showOnFrontPage="true">Google</organization>
+        <address>
+          <email>warren@kumari.net</email>
+        </address>
+      </author>
+    </section>
+  </back>
+</rfc>
