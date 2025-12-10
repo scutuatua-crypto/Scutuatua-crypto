@@ -4,6 +4,14 @@ Email `t.chaisak2518@outlook.com`
 Switch to private or alias-based  
 Reef identity protected.
 
+- name: Update SPLASHLOG
+  run: |
+    echo "# 🐚 Badge Minted at $(date)" >> splash.log
+    echo "Workflow: docker-mint-badge.yml • Container ritual complete" >> splash.log
+    echo "" >> splash.log
+
+
+
 ## 🐋 Boss WhaleTrucker Reef Timeline
 
 | Date       | Milestone                          | Status                          | Notes |
