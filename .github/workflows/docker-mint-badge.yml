@@ -13,18 +13,16 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Set up Docker
       uses: docker/setup-buildx-action@v2
 
     - name: Run Docker Compose
-      run: |
-        docker-compose -f docker-compose.yml up --build -d
+      run: docker-compose -f docker-compose.yml up -d --build
 
-    - name: Run badge minting inside container
-      run: |
-        docker exec reef-mint-container bash /app/setup.sh
+    - name: Mint badge inside app container
+      run: docker exec $(docker ps -qf "name=app") bash /app/setup.sh
 
     - name: Commit badge update
       run: |
