@@ -77,3 +77,9 @@ graph TD
   Yedfree["Legacy Route - Archived"]
   ScutuaBan["Legacy Route - Banned"]
 
+<!-- end list -->
+
+---
+### 🛡️ Verified Contributor
+**Wallet Address:** `0x1be31a94361a391bbafb2a4ccd704f57dc04d4bb`
+**Network:** Base / All EVM Chains
