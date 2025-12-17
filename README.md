@@ -77,9 +77,19 @@ graph TD
   Yedfree["Legacy Route - Archived"]
   ScutuaBan["Legacy Route - Banned"]
 
-<!-- end list -->
+## 🛡️ Identity & Reward Verification
+All development contributions are linked to the verified identity secured via GitHub Support.
 
----
-### 🛡️ Verified Contributor
-**Wallet Address:** `0x1be31a94361a391bbafb2a4ccd704f57dc04d4bb`
-**Network:** Base / All EVM Chains
+- **Primary Developer:** scutuatua-crypto
+- **IDE Status:** Verified (Linked to Professional VS Code Account)
+- **Reward Status:** Active / Eligibility Confirmed
+- **Primary Wallet:** `0x1be31a94361a391bbafb2a4ccd704f57dc04d4bb`
+
+## 🗺️ System Architecture (Reef Map)
+```mermaid
+graph TD
+    A[Identity: iCloud] -->|Verified| B(GitHub: scutuatua-crypto)
+    B -->|IDE Sync| C{Secure IDE Account}
+    C -->|Rewards| D[Primary Wallet]
+    D -->|Network| E[Base Chain]
+
