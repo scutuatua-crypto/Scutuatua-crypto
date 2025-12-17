@@ -69,13 +69,12 @@ This repository documents the identity migration and reef archive of Chaisak, se
 - Effect: Legacy preserved, WhaleTrucker remixed
 - Status: Memory locked
 
-## 🌊 Reef Map
-```mermaid
 graph TD
-  iCloud["Identity Route - Active"]
-  Gmail["Identity Route - Social Register"]
-  Yedfree["Legacy Route - Archived"]
-  ScutuaBan["Legacy Route - Banned"]
+    A[Identity: iCloud] -->|Verified| B(GitHub: scutuatua-crypto)
+    B -->|IDE Sync| C{Secure Developer Environment}
+    C -->|Asset Mapping| D[Primary Wallet: 0x1be3...d4bb]
+    D -->|Network| E[Base Chain]
+
 
 ## 🛡️ Identity & Reward Verification
 All development contributions are linked to the verified identity secured via GitHub Support.
