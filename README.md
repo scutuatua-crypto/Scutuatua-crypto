@@ -3,15 +3,15 @@
 
 ---
 
-### 🎄 Season's Greetings & Gratitude
-
-A heartfelt thank you to all the professionals and the community who have shared their expertise with this project—whether directly or by supporting us behind the scenes. Your collaboration is what makes this innovation possible.
-
-Special thanks to **GitHub** for giving us such a wonderful "home" to grow, build, and innovate together.
-
-Wishing everyone a safe and Merry Christmas! 🎁🏠✨
-
----
+> ### 🎄 Season's Greetings & Gratitude
+> 
+> A heartfelt thank you to all the professionals and the community who have shared their expertise with this project—whether directly or by supporting us behind the scenes. Your collaboration is what makes this innovation possible.
+> 
+> Special thanks to **GitHub** for giving us such a wonderful "home" to grow, build, and innovate together.
+> 
+> Wishing everyone a safe and Merry Christmas! 🎁🏠✨
+> 
+> ---
 > **WhaleTrucker Standard:** *“No Money, No Honey”* 🐋🚚💨
 
 ---
