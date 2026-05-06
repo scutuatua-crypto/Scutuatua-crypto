@@ -251,9 +251,10 @@ Special thanks to:
 ---
 
 **Last Updated:** 2026-05-06
-
+---
 WhaleTrucker Standard:
 **Last Updated:** 2026-05-06
+---
 **Ready for the commit** 🚛💎
 **Repository:** [scutuatua-crypto/Scutuatua-crypto](https://github.com/scutuatua-crypto/Scutuatua-crypto)
 
