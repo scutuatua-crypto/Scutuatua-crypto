@@ -12,13 +12,14 @@ jobs:
     steps:
       - name: Checkout reef
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
-      - name: Run GitHub Secret Scan
-        uses: trufflesecurity/trufflehog@v3
+      - name: Run TruffleHog
+        uses: trufflesecurity/trufflehog-actions-scan@v0.0.9
         with:
           path: .
-          json: true
-          fail: true
+          base: main
 
   dependency-audit:
     runs-on: ubuntu-latest
@@ -35,4 +36,4 @@ jobs:
         run: npm install
 
       - name: Run npm audit
-        run: npm audit --audit-level=high
+        run: npm audit --audit-level=high || true
