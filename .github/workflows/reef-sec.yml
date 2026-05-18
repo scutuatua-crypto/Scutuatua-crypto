@@ -16,10 +16,11 @@ jobs:
           fetch-depth: 0
 
       - name: Run TruffleHog
-        uses: trufflesecurity/trufflehog-actions-scan@v0.0.9
+        uses: trufflesecurity/trufflehog@main
         with:
-          path: .
-          base: main
+          path: ./
+          base: HEAD~1
+          head: HEAD
 
   dependency-audit:
     runs-on: ubuntu-latest
