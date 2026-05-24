@@ -2,13 +2,13 @@
 
 [![Repos](https://img.shields.io/badge/Repositories-80+-blue?logo=github)](https://github.com/scutuatua-crypto)
 [![Live](https://img.shields.io/badge/Platforms-4+%20Live-brightgreen?logo=vercel)](https://github.com/scutuatua-crypto)
-[![MCP](https://img.shields.io/badge/MCP-Live-orange?logo=anthropic)](https://scutua-mcp.onrender.com/sse)
+[![MCP](https://img.shields.io/badge/MCP-130%20Tools-orange?logo=anthropic)](https://scutua-mcp.onrender.com/mcp)
 [![Claude](https://img.shields.io/badge/Claude.ai-Connected-purple?logo=anthropic)](https://claude.ai)
 [![Security](https://img.shields.io/badge/Security-Zero--Trust-red?logo=shield)](https://github.com/scutuatua-crypto)
 [![CI/CD](https://img.shields.io/badge/CI%2FCD-Passing-brightgreen?logo=githubactions)](https://github.com/scutuatua-crypto)
 [![License](https://img.shields.io/badge/License-MIT-yellow)](https://github.com/scutuatua-crypto)
 
-> **Lead Developer & Architect** | Crypto Applications & Developer Tooling
+> **Lead Developer & Architect** | Crypto Applications & Developer Tooling  
 > 80+ Repositories | Solo Project | Multi-Chain Ready
 
 ---
@@ -29,7 +29,7 @@ I'm **scutuatua-crypto** — a solo developer building the WhaleTrucker Ecosyste
 | AssetFlow App | Portfolio Tracking | 🟢 Live |
 | WhaleTrucker Reef | Ecosystem Hub | 🟢 Live |
 | Yields Tracker | Yield Analytics | 🟢 Live |
-| Scutua-MCP | AI MCP Server | 🟢 Live |
+| Scutua-MCP | AI MCP Server (130 tools) | 🟢 Live |
 
 ---
 
@@ -37,7 +37,7 @@ I'm **scutuatua-crypto** — a solo developer building the WhaleTrucker Ecosyste
 
 | Repo | Description |
 |------|-------------|
-| `scutua-mcp` | AI-powered MCP server — Claude.ai connected |
+| `scutua-mcp` | AI-powered MCP server — 130 tools, Claude.ai connected |
 | `github-mcp-server` | GitHub integration, CI/CD fully repaired |
 | `cryptotruck` | Real-time crypto portfolio tracker |
 | `solana-monitor` | Wallet tracker + tiered reward system |
@@ -70,24 +70,20 @@ I'm **scutuatua-crypto** — a solo developer building the WhaleTrucker Ecosyste
 ## Scutua-MCP — AI Integration
 
 [![MCP Server](https://img.shields.io/badge/MCP_Server-Live-brightgreen?logo=anthropic)](https://scutua-mcp.onrender.com)
-[![SSE](https://img.shields.io/badge/Transport-SSE-blue)](https://scutua-mcp.onrender.com/sse)
-[![Tools](https://img.shields.io/badge/Tools-10-orange)](https://github.com/scutuatua-crypto/scutua-mcp)
+[![Tools](https://img.shields.io/badge/Tools-130-orange)](https://github.com/scutuatua-crypto/scutua-mcp)
+[![Smithery](https://img.shields.io/badge/Smithery-Published-blue)](https://smithery.ai/servers/scutuatua/scutua-mcp)
 
-Custom MCP server connecting Claude AI to the WhaleTrucker Ecosystem.
+Custom MCP server connecting Claude AI to the WhaleTrucker Ecosystem — **5-Dimensional Architecture V2.**
 
-**10 Tools Available:**
-- `get_token_price` — Real-time prices via CoinGecko
-- `track_whale_wallet` — Whale movement tracking
-- `get_portfolio_value` — Multi-chain portfolio
-- `get_solana_balance` — SOL balance + USD
-- `get_dot_balance` — Polkadot balance
-- `get_reef_balance` — Reef chain balance
-- `get_stable_balance` — USDT/USDC tracker
-- `calculate_honey_score` — WhaleTrucker score
-- `get_repo_status` — GitHub repo status
-- `list_repos` — All ecosystem repos
+| Dimension | Tools |
+|-----------|-------|
+| 🌐 Multi-Chain (11 chains) | Solana, Ethereum, Arbitrum, Optimism, BNB, Polkadot, Reef, TON, Cosmos, Base, CrossChain |
+| ⚡ DeFi Protocols (26) | Jupiter, Uniswap, Aave, Curve, GMX, Pendle, Compound, and more |
+| 🧠 Analytics (26) | Whale tracking, Birdeye, DeFiLlama, Nansen, Dune, Fear & Greed |
+| 🛠️ Operations (17) | GitHub, Tax, Telegram, Discord, Portfolio Tracker |
+| 📊 Market Intelligence (8) | CoinGecko, CMC, Kaito, LunarCrush, Alternative.me |
 
-**Connect:** `https://scutua-mcp.onrender.com/sse`
+**Connect:** `https://scutua-mcp.onrender.com/mcp`
 
 ---
 
@@ -108,25 +104,26 @@ Custom MCP server connecting Claude AI to the WhaleTrucker Ecosystem.
 ## Highlights
 
 - 80+ repositories managed solo
-- Multi-blockchain: Solana · Reef · Ethereum · BSC · Polygon · Arbitrum · TON · Polkadot
+- Multi-blockchain: Solana · Ethereum · Arbitrum · Optimism · BNB · Reef · TON · Polkadot · Cosmos · Base
 - 4+ live platforms
 - Enterprise-grade zero-trust security
-- Automated CI/CD pipelines — fully repaired May 2026
+- Automated CI/CD pipelines — 1,298+ runs
 - 90% reward/yield systems automated and live
-- Custom AI MCP server — Claude.ai connected May 2026
+- Custom AI MCP server — **130 tools**, Claude.ai + Smithery connected
 - ruby-gems v0.1.0 — 156+ downloads on RubyGems.org
 
 ---
 
 ## Recent Updates (May 2026)
 
-**Scutua-MCP Launch:**
-- MCP server deployed on Render
-- Claude.ai connected via SSE transport
-- 10 tools live — price, balance, whale tracking, portfolio
+**Scutua-MCP V2 Launch:**
+- Refactored to 5-Dimensional Architecture
+- 130 tools live across 5 dimensions
+- Streamable HTTP transport (FastMCP 3.3.1)
+- Published on Smithery — available to thousands of agents
+- New integrations: Birdeye, DeFiLlama, Nansen, Dune, Telegram, Discord, LunarCrush, Kaito
 
 **Infrastructure:**
-- Refactoring 80+ repos for Etherscan API shifts
 - Solana Monitor using Solscan v2
 - solana-monitor — tiered reward system (Bronze → Diamond)
 
@@ -138,11 +135,11 @@ Custom MCP server connecting Claude AI to the WhaleTrucker Ecosystem.
 
 ## WhaleTrucker Standard
 
-> *"No Money, No Honey"* 🚚💿
-> **Too fast for the API, too safe for the chain.**
+> *"No Money, No Honey"* 🚚💿  
+> **Too fast for the API, too safe for the chain.**  
 > **Powered by: Nokia 3310 Wind Power + Claude AI** 💙💨
 
 ---
 
-*Built with ❤️ by scutuatua-crypto | Solo Developer | Crypto Enthusiast | Builder*
+*Built with ❤️ by scutuatua-crypto | Solo Developer | Crypto Enthusiast | Builder*  
 *Deployed from iPad. No PC required. 😤*
