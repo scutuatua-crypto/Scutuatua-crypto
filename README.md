@@ -8,14 +8,15 @@
 [![CI/CD](https://img.shields.io/badge/CI%2FCD-Passing-brightgreen?logo=githubactions)](https://github.com/scutuatua-crypto)
 [![License](https://img.shields.io/badge/License-MIT-yellow)](https://github.com/scutuatua-crypto)
 
-> **Lead Developer & Architect** | Crypto Applications & Developer Tooling  
+> **Lead Developer & Architect** | Crypto Applications & Developer Tooling
 > 80+ Repositories | Solo Project | Multi-Chain Ready
 
 ---
 
 ## About Me
 
-I'm **scutuatua-crypto** — a solo developer building the WhaleTrucker Ecosystem, a comprehensive suite of crypto applications, reward systems, and developer tooling.
+I'm **scutuatua-crypto** — a solo developer building the WhaleTrucker Ecosystem,
+a comprehensive suite of crypto applications, reward systems, and developer tooling.
 
 **Mission:** Secure, auditable, and user-friendly crypto solutions.
 
@@ -73,7 +74,8 @@ I'm **scutuatua-crypto** — a solo developer building the WhaleTrucker Ecosyste
 [![Tools](https://img.shields.io/badge/Tools-130-orange)](https://github.com/scutuatua-crypto/scutua-mcp)
 [![Smithery](https://img.shields.io/badge/Smithery-Published-blue)](https://smithery.ai/servers/scutuatua/scutua-mcp)
 
-Custom MCP server connecting Claude AI to the WhaleTrucker Ecosystem — **5-Dimensional Architecture V2.**
+Custom MCP server connecting Claude AI to the WhaleTrucker Ecosystem —
+**5-Dimensional Architecture V2.**
 
 | Dimension | Tools |
 |-----------|-------|
@@ -117,6 +119,7 @@ Custom MCP server connecting Claude AI to the WhaleTrucker Ecosystem — **5-Dim
 ## Recent Updates (May 2026)
 
 **Scutua-MCP V2 Launch:**
+
 - Refactored to 5-Dimensional Architecture
 - 130 tools live across 5 dimensions
 - Streamable HTTP transport (FastMCP 3.3.1)
@@ -124,10 +127,12 @@ Custom MCP server connecting Claude AI to the WhaleTrucker Ecosystem — **5-Dim
 - New integrations: Birdeye, DeFiLlama, Nansen, Dune, Telegram, Discord, LunarCrush, Kaito
 
 **Infrastructure:**
+
 - Solana Monitor using Solscan v2
 - solana-monitor — tiered reward system (Bronze → Diamond)
 
 **Releases:**
+
 - ruby-gems v0.1.0 published
 - github-mcp-server CI/CD fully restored
 
@@ -135,11 +140,11 @@ Custom MCP server connecting Claude AI to the WhaleTrucker Ecosystem — **5-Dim
 
 ## WhaleTrucker Standard
 
-> *"No Money, No Honey"* 🚚💿  
-> **Too fast for the API, too safe for the chain.**  
+> *"No Money, No Honey"* 🚚💿
+> **Too fast for the API, too safe for the chain.**
 > **Powered by: Nokia 3310 Wind Power + Claude AI** 💙💨
 
 ---
 
-*Built with ❤️ by scutuatua-crypto | Solo Developer | Crypto Enthusiast | Builder*  
+*Built with ❤️ by scutuatua-crypto | Solo Developer | Crypto Enthusiast | Builder*
 *Deployed from iPad. No PC required. 😤*
