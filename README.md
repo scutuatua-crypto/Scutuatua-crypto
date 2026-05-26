@@ -1,4 +1,3 @@
-cat > /mnt/user-data/outputs/PROFILE_README.md << 'EOF'
 # 🐋 WhaleTrucker Ecosystem
 
 [![Repos](https://img.shields.io/badge/Repositories-80+-blue?logo=github)](https://github.com/scutuatua-crypto)
@@ -185,7 +184,15 @@ scutua-mcp/
 - ruby-gems v0.1.0 published
 
 ---
+**Output:**
 
+{
+  "returncode" : 0,
+  "stdout" : "",
+  "stderr" : ""
+}
+
+---
 ## WhaleTrucker Standard
 
 > *"No Money, No Honey"* 🚚💿
