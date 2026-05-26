@@ -1,8 +1,9 @@
+cat > /mnt/user-data/outputs/PROFILE_README.md << 'EOF'
 # 🐋 WhaleTrucker Ecosystem
 
 [![Repos](https://img.shields.io/badge/Repositories-80+-blue?logo=github)](https://github.com/scutuatua-crypto)
 [![Live](https://img.shields.io/badge/Platforms-4+%20Live-brightgreen?logo=vercel)](https://github.com/scutuatua-crypto)
-[![MCP](https://img.shields.io/badge/MCP-130%20Tools-orange?logo=anthropic)](https://scutua-mcp.onrender.com/mcp)
+[![MCP](https://img.shields.io/badge/MCP-152%20Tools-orange?logo=anthropic)](https://scutua-mcp.onrender.com/mcp)
 [![Claude](https://img.shields.io/badge/Claude.ai-Connected-purple?logo=anthropic)](https://claude.ai)
 [![Security](https://img.shields.io/badge/Security-Zero--Trust-red?logo=shield)](https://github.com/scutuatua-crypto)
 [![CI/CD](https://img.shields.io/badge/CI%2FCD-Passing-brightgreen?logo=githubactions)](https://github.com/scutuatua-crypto)
@@ -30,7 +31,7 @@ a comprehensive suite of crypto applications, reward systems, and developer tool
 | AssetFlow App | Portfolio Tracking | 🟢 Live |
 | WhaleTrucker Reef | Ecosystem Hub | 🟢 Live |
 | Yields Tracker | Yield Analytics | 🟢 Live |
-| Scutua-MCP | AI MCP Server (130 tools) | 🟢 Live |
+| Scutua-MCP | Agentic DeFi MCP Server (152 tools) | 🟢 Live |
 
 ---
 
@@ -38,7 +39,7 @@ a comprehensive suite of crypto applications, reward systems, and developer tool
 
 | Repo | Description |
 |------|-------------|
-| `scutua-mcp` | AI-powered MCP server — 130 tools, Claude.ai connected |
+| `scutua-mcp` | World's first Agentic DeFi MCP — 152 tools, 7 dimensions |
 | `github-mcp-server` | GitHub integration, CI/CD fully repaired |
 | `cryptotruck` | Real-time crypto portfolio tracker |
 | `solana-monitor` | Wallet tracker + tiered reward system |
@@ -68,22 +69,61 @@ a comprehensive suite of crypto applications, reward systems, and developer tool
 
 ---
 
-## Scutua-MCP — AI Integration
+## Scutua-MCP — World's First Agentic DeFi MCP
 
 [![MCP Server](https://img.shields.io/badge/MCP_Server-Live-brightgreen?logo=anthropic)](https://scutua-mcp.onrender.com)
-[![Tools](https://img.shields.io/badge/Tools-130-orange)](https://github.com/scutuatua-crypto/scutua-mcp)
-[![Smithery](https://img.shields.io/badge/Smithery-Published-blue)](https://smithery.ai/servers/scutuatua/scutua-mcp)
+[![Tools](https://img.shields.io/badge/Tools-152-orange)](https://github.com/scutuatua-crypto/scutua-mcp)
+[![Smithery](https://img.shields.io/badge/Smithery-Score_84%2F100-blue)](https://smithery.ai/servers/scutuatua/scutua-mcp)
+[![Dimensions](https://img.shields.io/badge/Architecture-7--Dimensional-purple)](https://github.com/scutuatua-crypto/scutua-mcp)
 
-Custom MCP server connecting Claude AI to the WhaleTrucker Ecosystem —
-**5-Dimensional Architecture V2.**
+Not just data retrieval. **Get → Think → Act → Notify.**
 
-| Dimension | Tools |
-|-----------|-------|
-| 🌐 Multi-Chain (11 chains) | Solana, Ethereum, Arbitrum, Optimism, BNB, Polkadot, Reef, TON, Cosmos, Base, CrossChain |
-| ⚡ DeFi Protocols (26) | Jupiter, Uniswap, Aave, Curve, GMX, Pendle, Compound, and more |
-| 🧠 Analytics (26) | Whale tracking, Birdeye, DeFiLlama, Nansen, Dune, Fear & Greed |
-| 🛠️ Operations (17) | GitHub, Tax, Telegram, Discord, Portfolio Tracker |
-| 📊 Market Intelligence (8) | CoinGecko, CMC, Kaito, LunarCrush, Alternative.me |
+### 7-Dimensional Architecture
+
+| Dimension | Tools | Coverage |
+|-----------|-------|----------|
+| 🌐 Multi-Chain Universe | 11 | Solana, Ethereum, Arbitrum, Optimism, BNB, Polkadot, Reef, TON, Cosmos, Base, CrossChain |
+| ⚡ DeFi Protocol Universe | 26 | Jupiter, Uniswap, Aave, Curve, GMX, Pendle, Compound, and more |
+| 🧠 Intelligence & Analytics | 26 | Whale tracking, Birdeye, DeFiLlama, Nansen, Dune, Fear & Greed |
+| 🛠️ Operations & DevOps | 17 | GitHub, Tax, Telegram, Discord, Portfolio Tracker |
+| 📊 Market Intelligence | 8 | CoinGecko, CMC, Kaito, LunarCrush, Alternative.me |
+| 🤖 Agentic Layer | 5 | Arbitrage Scanner, Whale Alert, Portfolio Autopilot, Sentiment Signal |
+| ⚡ Execution Layer | 18 | Swap, Limit Order, DCA, Stop Loss, Rebalance, Sniper, Emergency Exit |
+
+### Agentic Flow
+
+```
+Market Data (Dim 1-5)
+       ↓
+Sentiment Signal → BUY / SELL / HOLD
+       ↓
+Claude AI Decision Engine
+       ↓
+Execute: Swap / DCA / Limit Order / Stop Loss
+       ↓
+Telegram Alert → Confirmed
+```
+
+### Project Structure
+
+```
+scutua-mcp/
+└── src/tools/
+    ├── chains/       # 🌐 11 chains
+    ├── protocols/    # ⚡ 26 protocols
+    ├── analytics/    # 🧠 26 tools
+    ├── operations/   # 🛠️ 17 tools
+    ├── market/       # 📊 8 tools
+    ├── agentic/      # 🤖 5 tools
+    └── execution/    # ⚡ 18 tools
+        ├── swap_executor.py
+        ├── limit_order.py
+        ├── dca_engine.py
+        ├── stop_loss.py
+        ├── auto_rebalance.py
+        ├── sniper.py
+        └── emergency_exit.py
+```
 
 **Connect:** `https://scutua-mcp.onrender.com/mcp`
 
@@ -100,6 +140,7 @@ Custom MCP server connecting Claude AI to the WhaleTrucker Ecosystem —
 - Automated secret scanning on every commit
 - Read-only access for AI/automation tools
 - Comprehensive audit logging
+- Execution layer: `dry_run=True` by default
 
 ---
 
@@ -109,32 +150,39 @@ Custom MCP server connecting Claude AI to the WhaleTrucker Ecosystem —
 - Multi-blockchain: Solana · Ethereum · Arbitrum · Optimism · BNB · Reef · TON · Polkadot · Cosmos · Base
 - 4+ live platforms
 - Enterprise-grade zero-trust security
-- Automated CI/CD pipelines — 1,298+ runs
+- Automated CI/CD pipelines — 1,300+ runs
 - 90% reward/yield systems automated and live
-- Custom AI MCP server — **130 tools**, Claude.ai + Smithery connected
+- Custom AI MCP server — **152 tools**, 7 dimensions, Claude.ai + Smithery connected
 - ruby-gems v0.1.0 — 156+ downloads on RubyGems.org
 
 ---
 
 ## Recent Updates (May 2026)
 
-**Scutua-MCP V2 Launch:**
+**Scutua-MCP Dimension 7 — Execution Layer:**
 
-- Refactored to 5-Dimensional Architecture
-- 130 tools live across 5 dimensions
-- Streamable HTTP transport (FastMCP 3.3.1)
-- Published on Smithery — available to thousands of agents
-- New integrations: Birdeye, DeFiLlama, Nansen, Dune, Telegram, Discord, LunarCrush, Kaito
+- 18 new execution tools: Swap, Limit Order, DCA, Stop Loss, Rebalance, Sniper, Emergency Exit
+- Real on-chain execution via Jupiter (Solana)
+- Safety-first: dry_run mode, Telegram confirmation, safety scoring
+- 130 → **152 tools** live
+- Smithery Quality Score: **84/100**
+
+**Scutua-MCP Dimension 6 — Agentic Layer:**
+
+- Cross-chain Arbitrage Scanner
+- Whale Alert → Telegram Auto
+- Portfolio Autopilot
+- On-chain Sentiment Signal → BUY/SELL/HOLD
 
 **Infrastructure:**
 
 - Solana Monitor using Solscan v2
 - solana-monitor — tiered reward system (Bronze → Diamond)
+- github-mcp-server CI/CD fully restored
 
 **Releases:**
 
 - ruby-gems v0.1.0 published
-- github-mcp-server CI/CD fully restored
 
 ---
 
@@ -148,3 +196,4 @@ Custom MCP server connecting Claude AI to the WhaleTrucker Ecosystem —
 
 *Built with ❤️ by scutuatua-crypto | Solo Developer | Crypto Enthusiast | Builder*
 *Deployed from iPad. No PC required. 😤*
+EOF
