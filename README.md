@@ -184,15 +184,6 @@ scutua-mcp/
 - ruby-gems v0.1.0 published
 
 ---
-**Output:**
-
-{
-  "returncode" : 0,
-  "stdout" : "",
-  "stderr" : ""
-}
-
----
 ## WhaleTrucker Standard
 
 > *"No Money, No Honey"* 🚚💿
