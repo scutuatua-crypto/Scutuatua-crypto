@@ -22,6 +22,24 @@ a comprehensive suite of crypto applications, reward systems, and developer tool
 
 ---
 
+## Description
+🐋 WhaleTrucker Ecosystem — Agentic DeFi MCP 152 tools, 7 dimensions. Solo builder. Deployed from iPad. 😤
+https://scutua-mcp.onrender.com/mcp
+
+---
+
+## Topics
+- crypto
+- defi
+- mcp
+- solana
+- web3
+- claude-ai
+- typescript
+- whaletrucker
+
+---
+
 ## Active Platforms
 
 | Platform | Type | Status |
