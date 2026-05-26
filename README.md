@@ -91,7 +91,7 @@ Not just data retrieval. **Get → Think → Act → Notify.**
 
 ### Agentic Flow
 
-```
+```text
 Market Data (Dim 1-5)
        ↓
 Sentiment Signal → BUY / SELL / HOLD
@@ -105,7 +105,7 @@ Telegram Alert → Confirmed
 
 ### Project Structure
 
-```
+```text
 scutua-mcp/
 └── src/tools/
     ├── chains/       # 🌐 11 chains
