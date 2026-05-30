@@ -2,13 +2,15 @@
 
 [![Repos](https://img.shields.io/badge/Repositories-80+-blue?logo=github)](https://github.com/scutuatua-crypto)
 [![Live](https://img.shields.io/badge/Platforms-4+%20Live-brightgreen?logo=vercel)](https://github.com/scutuatua-crypto)
-[![MCP](https://img.shields.io/badge/MCP-152%20Tools-orange?logo=anthropic)](https://scutua-mcp.onrender.com/mcp)
+[![MCP](https://img.shields.io/badge/MCP-157%20Tools-orange?logo=anthropic)](https://scutua-mcp.onrender.com/mcp)
+[![npm](https://img.shields.io/badge/npm-scutua--mcp-red?logo=npm)](https://www.npmjs.com/package/scutua-mcp)
 [![Claude](https://img.shields.io/badge/Claude.ai-Connected-purple?logo=anthropic)](https://claude.ai)
+[![Avalanche](https://img.shields.io/badge/Avalanche-Integration-red?logo=avalanche)](https://build.avax.network/integrations)
 [![Security](https://img.shields.io/badge/Security-Zero--Trust-red?logo=shield)](https://github.com/scutuatua-crypto)
 [![CI/CD](https://img.shields.io/badge/CI%2FCD-Passing-brightgreen?logo=githubactions)](https://github.com/scutuatua-crypto)
 [![License](https://img.shields.io/badge/License-MIT-yellow)](https://github.com/scutuatua-crypto)
 
-> **Lead Developer & Architect** | Crypto Applications & Developer Tooling
+> **Lead Developer & Architect** | Crypto Applications & Developer Tooling  
 > 80+ Repositories | Solo Project | Multi-Chain Ready
 
 ---
@@ -22,24 +24,6 @@ a comprehensive suite of crypto applications, reward systems, and developer tool
 
 ---
 
-## Description
-🐋 WhaleTrucker Ecosystem — Agentic DeFi MCP 152 tools, 7 dimensions. Solo builder. Deployed from iPad. 😤
-https://scutua-mcp.onrender.com/mcp
-
----
-
-## Topics
-- crypto
-- defi
-- mcp
-- solana
-- web3
-- claude-ai
-- typescript
-- whaletrucker
-
----
-
 ## Active Platforms
 
 | Platform | Type | Status |
@@ -48,7 +32,7 @@ https://scutua-mcp.onrender.com/mcp
 | AssetFlow App | Portfolio Tracking | 🟢 Live |
 | WhaleTrucker Reef | Ecosystem Hub | 🟢 Live |
 | Yields Tracker | Yield Analytics | 🟢 Live |
-| Scutua-MCP | Agentic DeFi MCP Server (152 tools) | 🟢 Live |
+| Scutua-MCP | Agentic DeFi MCP Server (157 tools) | 🟢 Live |
 
 ---
 
@@ -56,7 +40,7 @@ https://scutua-mcp.onrender.com/mcp
 
 | Repo | Description |
 |------|-------------|
-| `scutua-mcp` | World's first Agentic DeFi MCP — 152 tools, 7 dimensions |
+| `scutua-mcp` | World's first Agentic DeFi MCP — 157 tools, 8 dimensions |
 | `github-mcp-server` | GitHub integration, CI/CD fully repaired |
 | `cryptotruck` | Real-time crypto portfolio tracker |
 | `solana-monitor` | Wallet tracker + tiered reward system |
@@ -89,13 +73,15 @@ https://scutua-mcp.onrender.com/mcp
 ## Scutua-MCP — World's First Agentic DeFi MCP
 
 [![MCP Server](https://img.shields.io/badge/MCP_Server-Live-brightgreen?logo=anthropic)](https://scutua-mcp.onrender.com)
-[![Tools](https://img.shields.io/badge/Tools-152-orange)](https://github.com/scutuatua-crypto/scutua-mcp)
+[![Tools](https://img.shields.io/badge/Tools-157-orange)](https://github.com/scutuatua-crypto/scutua-mcp)
+[![npm](https://img.shields.io/badge/npx-scutua--mcp-red?logo=npm)](https://www.npmjs.com/package/scutua-mcp)
 [![Smithery](https://img.shields.io/badge/Smithery-Score_84%2F100-blue)](https://smithery.ai/servers/scutuatua/scutua-mcp)
-[![Dimensions](https://img.shields.io/badge/Architecture-7--Dimensional-purple)](https://github.com/scutuatua-crypto/scutua-mcp)
+[![Avalanche](https://img.shields.io/badge/Avalanche-Official_Integration-red)](https://build.avax.network/integrations)
+[![Dimensions](https://img.shields.io/badge/Architecture-8--Dimensional-purple)](https://github.com/scutuatua-crypto/scutua-mcp)
 
-Not just data retrieval. **Get → Think → Act → Notify.**
+Not just data retrieval. **Get → Think → Act → Notify → Know Thyself.**
 
-### 7-Dimensional Architecture
+### 8-Dimensional Architecture
 
 | Dimension | Tools | Coverage |
 |-----------|-------|----------|
@@ -106,11 +92,12 @@ Not just data retrieval. **Get → Think → Act → Notify.**
 | 📊 Market Intelligence | 8 | CoinGecko, CMC, Kaito, LunarCrush, Alternative.me |
 | 🤖 Agentic Layer | 5 | Arbitrage Scanner, Whale Alert, Portfolio Autopilot, Sentiment Signal |
 | ⚡ Execution Layer | 18 | Swap, Limit Order, DCA, Stop Loss, Rebalance, Sniper, Emergency Exit |
+| 🌌 Ecosystem Consciousness | 5 | Heartbeat, Biometrics, Intelligence, Narrative, What Should I Build |
 
 ### Agentic Flow
 
 ```text
-Market Data (Dim 1-5)
+Market Data (Dim 1–5)
        ↓
 Sentiment Signal → BUY / SELL / HOLD
        ↓
@@ -119,30 +106,20 @@ Claude AI Decision Engine
 Execute: Swap / DCA / Limit Order / Stop Loss
        ↓
 Telegram Alert → Confirmed
+       ↓
+Ecosystem Consciousness → Self-Aware 🌌
 ```
 
-### Project Structure
+### Quick Connect
 
-```text
-scutua-mcp/
-└── src/tools/
-    ├── chains/       # 🌐 11 chains
-    ├── protocols/    # ⚡ 26 protocols
-    ├── analytics/    # 🧠 26 tools
-    ├── operations/   # 🛠️ 17 tools
-    ├── market/       # 📊 8 tools
-    ├── agentic/      # 🤖 5 tools
-    └── execution/    # ⚡ 18 tools
-        ├── swap_executor.py
-        ├── limit_order.py
-        ├── dca_engine.py
-        ├── stop_loss.py
-        ├── auto_rebalance.py
-        ├── sniper.py
-        └── emergency_exit.py
+```bash
+npx scutua-mcp              # instructions
+npx scutua-mcp --config     # Claude Desktop config
+npx scutua-mcp --vscode     # VS Code / Cursor config
+npx scutua-mcp --test       # test if server is live
 ```
 
-**Connect:** `https://scutua-mcp.onrender.com/mcp`
+**Or connect directly:** `https://scutua-mcp.onrender.com/mcp`
 
 ---
 
@@ -167,49 +144,46 @@ scutua-mcp/
 - Multi-blockchain: Solana · Ethereum · Arbitrum · Optimism · BNB · Reef · TON · Polkadot · Cosmos · Base
 - 4+ live platforms
 - Enterprise-grade zero-trust security
-- Automated CI/CD pipelines — 1,300+ runs
+- Automated CI/CD pipelines — 2,300+ runs
 - 90% reward/yield systems automated and live
-- Custom AI MCP server — **152 tools**, 7 dimensions, Claude.ai + Smithery connected
-- ruby-gems v0.1.0 — 156+ downloads on RubyGems.org
+- Custom AI MCP server — **157 tools**, 8 dimensions, Claude.ai + Smithery connected
+- **npm published** — `npx scutua-mcp` available globally
+- **Avalanche official integration** — listed at build.avax.network
+- ruby-gems v0.1.0 — 174+ downloads on RubyGems.org
 
 ---
 
 ## Recent Updates (May 2026)
 
-**Scutua-MCP Dimension 7 — Execution Layer:**
+**npm Package Published:**
+- `npx scutua-mcp` now available globally
+- Supports Claude Desktop, VS Code, Cursor, Windsurf
+- Auto-publish via GitHub Actions on every release
 
-- 18 new execution tools: Swap, Limit Order, DCA, Stop Loss, Rebalance, Sniper, Emergency Exit
+**Avalanche Ecosystem Integration:**
+- PR #4244 submitted to ava-labs/builders-hub
+- Listed in official Avalanche integrations directory
+- Exposure to entire Avalanche developer community
+
+**Scutua-MCP Dimension 8 — Ecosystem Consciousness:**
+- 5 new tools: Heartbeat, Biometrics, Intelligence, Narrative, What Should I Build
+- 152 → **157 tools** live
+- Self-aware agentic DeFi server
+
+**Scutua-MCP Dimension 7 — Execution Layer:**
+- 18 execution tools: Swap, Limit Order, DCA, Stop Loss, Rebalance, Sniper, Emergency Exit
 - Real on-chain execution via Jupiter (Solana)
-- Safety-first: dry_run mode, Telegram confirmation, safety scoring
-- 130 → **152 tools** live
 - Smithery Quality Score: **84/100**
 
-**Scutua-MCP Dimension 6 — Agentic Layer:**
-
-- Cross-chain Arbitrage Scanner
-- Whale Alert → Telegram Auto
-- Portfolio Autopilot
-- On-chain Sentiment Signal → BUY/SELL/HOLD
-
-**Infrastructure:**
-
-- Solana Monitor using Solscan v2
-- solana-monitor — tiered reward system (Bronze → Diamond)
-- github-mcp-server CI/CD fully restored
-
-**Releases:**
-
-- ruby-gems v0.1.0 published
-
 ---
+
 ## WhaleTrucker Standard
 
-> *"No Money, No Honey"* 🚚💿
-> **Too fast for the API, too safe for the chain.**
+> *"No Money, No Honey"* 🚚💿  
+> **Too fast for the API, too safe for the chain.**  
 > **Powered by: Nokia 3310 Wind Power + Claude AI** 💙💨
 
 ---
 
-*Built with ❤️ by scutuatua-crypto | Solo Developer | Crypto Enthusiast | Builder*
+*Built with ❤️ by scutuatua-crypto | Solo Developer | Crypto Enthusiast | Builder*  
 *Deployed from iPad. No PC required. 😤*
-EOF
